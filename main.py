@@ -42,10 +42,23 @@ running = True
 
 while running:
     clock.tick(60)  # in FPS
-
+    # === Event Loop ===
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+        # Repair button clickable
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            if (button_x <= mouse_x <= button_x + button_width) and (
+                    button_y <= mouse_y <= button_y + button_height):
+                repairing = True
+
+        # Progress update
+        if repairing and repair_progress < 100:
+            repair_progress += REPAIR_SPEED
+        elif repair_progress >= 100:
+            repairing = False
 
     # Fill background
     WINDOW.fill(GRAY)
@@ -62,11 +75,4 @@ while running:
     pygame.display.flip()
 
 pygame.quit()
-
-# Repair button clickable
-if event.type == pygame.MOUSEBUTTONDOWN:
-    mouse_x, mouse_y = pygame.mouse.get_pos()
-    if (button_x <= mouse_x <= button_x + button_width) and (button_y <= mouse_y <= button_y + button_height):
-        repairing = True
-
 sys.exit()
