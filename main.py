@@ -71,6 +71,13 @@ while running:
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
     WINDOW.blit(button_text, button_text_rect)
 
+    # Progress bar background
+    pygame.draw.rect(WINDOW, (100, 100, 100), (button_x, button_y + 60, button_width, 20))
+
+    # Progress bar fill
+    fill_width = (repair_progress / 100) * button_width
+    pygame.draw.rect(WINDOW, (0, 255, 0), (button_x, button_y + 60, fill_width, 20))
+
     # Update display
     pygame.display.flip()
 
