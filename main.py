@@ -33,6 +33,8 @@ REPAIR_SPEED = 1
 
 # Money
 money = 0
+money_font = pygame.font.SysFont(None, 36)
+
 
 # Font setup
 font = pygame.font.SysFont(None, 36)
@@ -83,6 +85,10 @@ while running:
     # Progress bar fill
     fill_width = (repair_progress / 100) * button_width
     pygame.draw.rect(WINDOW, (0, 255, 0), (button_x, button_y + 60, fill_width, 20))
+
+    # Draw money text
+    money_text = money_font.render(f"${money}", True, WHITE)
+    WINDOW.blit(money_text, (20, 20))
 
     # Update display
     pygame.display.flip()
