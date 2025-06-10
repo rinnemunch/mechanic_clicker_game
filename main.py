@@ -26,6 +26,10 @@ button_font = pygame.font.SysFont(None, 30)
 button_text = button_font.render("Repair", True, WHITE)
 button_text_rect = button_text.get_rect(center=(button_x + button_width // 2, button_y + button_height // 2))
 
+# Repair logic
+repairing = False
+repair_progress = 0
+REPAIR_SPEED = 1
 
 # Font setup
 font = pygame.font.SysFont(None, 36)
