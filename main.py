@@ -58,10 +58,13 @@ while running:
                 repairing = True
 
         # Progress update
-        if repairing and repair_progress < 100:
-            repair_progress += REPAIR_SPEED
-        elif repair_progress >= 100:
-            repairing = False
+        if repairing:
+            if repair_progress < 100:
+                repair_progress += REPAIR_SPEED
+            else:
+                repairing = False
+                repair_progress = 0
+                money += 10
 
     # Fill background
     WINDOW.fill(GRAY)
