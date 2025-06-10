@@ -62,4 +62,11 @@ while running:
     pygame.display.flip()
 
 pygame.quit()
+
+# Repair button clickable
+if event.type == pygame.MOUSEBUTTONDOWN:
+    mouse_x, mouse_y = pygame.mouse.get_pos()
+    if (button_x <= mouse_x <= button_x + button_width) and (button_y <= mouse_y <= button_y + button_height):
+        repairing = True
+
 sys.exit()
