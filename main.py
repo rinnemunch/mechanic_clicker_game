@@ -31,6 +31,9 @@ repairing = False
 repair_progress = 0
 REPAIR_SPEED = 1
 
+# Money
+money = 0
+
 # Font setup
 font = pygame.font.SysFont(None, 36)
 text_surface = font.render("Car", True, WHITE)
