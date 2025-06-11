@@ -47,6 +47,19 @@ settings_text = settings_font.render("Settings", True, WHITE)
 settings_text_rect = settings_text.get_rect(
     center=(settings_x + settings_width // 2, settings_y + settings_height // 2))
 
+# Stats button
+stats_width = 150
+stats_height = 50
+stats_x = button_x - stats_width - 20  # Shifted left
+stats_y = button_y
+STATS_COLOR = (128, 0, 128)
+stats_font = pygame.font.SysFont(None, 30)
+stats_text = stats_font.render("Stats", True, WHITE)
+stats_text_rect = stats_text.get_rect(
+    center=(stats_x + stats_width // 2, stats_y + stats_height // 2))
+
+
+
 # Repair logic
 repairing = False
 repair_progress = 0
@@ -103,6 +116,11 @@ while running:
                     settings_y <= mouse_y <= settings_y + settings_height):
                 print("Settings clicked")
 
+            # Stats button
+            elif (stats_x <= mouse_x <= stats_x + stats_width) and (
+                    stats_y <= mouse_y <= stats_y + stats_height):
+                print("Stats clicked")
+
         # Progress update
         if repairing:
             if repair_progress < 100:
@@ -130,6 +148,10 @@ while running:
     # Draw settings button
     pygame.draw.rect(WINDOW, SETTINGS_COLOR, (settings_x, settings_y, settings_width, settings_height))
     WINDOW.blit(settings_text, settings_text_rect)
+
+    # Draw stats button
+    pygame.draw.rect(WINDOW, STATS_COLOR, (stats_x, stats_y, stats_width, stats_height))
+    WINDOW.blit(stats_text, stats_text_rect)
 
     # Progress bar background
     pygame.draw.rect(WINDOW, (100, 100, 100), (button_x, button_y + 60, button_width, 20))
