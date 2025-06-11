@@ -36,6 +36,16 @@ shop_font = pygame.font.SysFont(None, 30)
 shop_text = shop_font.render("Shop", True, WHITE)
 shop_text_rect = shop_text.get_rect(center=(shop_x + shop_width // 2, shop_y + shop_height // 2))
 
+# Settings button
+settings_x = shop_x + shop_width + 20
+settings_y = button_y
+settings_width = 150
+settings_height = 50
+SETTINGS_COLOR = (180, 180, 0)
+settings_font = pygame.font.SysFont(None, 30)
+settings_text = settings_font.render("Settings", True, WHITE)
+settings_text_rect = settings_text.get_rect(
+    center=(settings_x + settings_width // 2, settings_y + settings_height // 2))
 
 # Repair logic
 repairing = False
@@ -45,7 +55,6 @@ REPAIR_SPEED = 1
 # Money
 money = 0
 money_font = pygame.font.SysFont(None, 36)
-
 
 # Font setup
 font = pygame.font.SysFont(None, 36)
@@ -62,17 +71,11 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-        # Repair button clickable
+        # === MOUSEDOWN LOGIC ===
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            if (button_x <= mouse_x <= button_x + button_width) and (
-                    button_y <= mouse_y <= button_y + button_height):
-                repairing = True
 
-        # Shop button click logic
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_x, mouse_y = pygame.mouse.get_pos()
+            # Repair button
             if (button_x <= mouse_x <= button_x + button_width) and (
                     button_y <= mouse_y <= button_y + button_height):
                 if repair_progress < 100:
@@ -81,9 +84,15 @@ while running:
                     repair_progress = 0
                     money += 10
 
+            # Shop button
             elif (shop_x <= mouse_x <= shop_x + shop_width) and (
                     shop_y <= mouse_y <= shop_y + shop_height):
                 print("Shop clicked")
+
+            # Settings button
+            elif (settings_x <= mouse_x <= settings_x + settings_width) and (
+                    settings_y <= mouse_y <= settings_y + settings_height):
+                print("Settings clicked")
 
         # Progress update
         if repairing:
@@ -108,6 +117,10 @@ while running:
     # Draw shop button
     pygame.draw.rect(WINDOW, SHOP_COLOR, (shop_x, shop_y, shop_width, shop_height))
     WINDOW.blit(shop_text, shop_text_rect)
+
+    # Draw settings button
+    pygame.draw.rect(WINDOW, SETTINGS_COLOR, (settings_x, settings_y, settings_width, settings_height))
+    WINDOW.blit(settings_text, settings_text_rect)
 
     # Progress bar background
     pygame.draw.rect(WINDOW, (100, 100, 100), (button_x, button_y + 60, button_width, 20))
