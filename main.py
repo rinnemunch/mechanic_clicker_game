@@ -72,6 +72,12 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         # === MOUSEDOWN LOGIC ===
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_g:
+                money += 100
+                print("Secret money cheat activated!")
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
 
