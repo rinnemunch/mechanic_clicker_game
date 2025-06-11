@@ -59,14 +59,14 @@ while running:
                     button_y <= mouse_y <= button_y + button_height):
                 repairing = True
 
-        # Progress update
-        if repairing:
-            if repair_progress < 100:
-                repair_progress += REPAIR_SPEED
-            else:
-                repairing = False
-                repair_progress = 0
-                money += 10
+    # Progress update
+    if repairing:
+        if repair_progress < 100:
+            repair_progress += REPAIR_SPEED
+        else:
+            repairing = False
+            repair_progress = 0
+            money += 10
 
     # Fill background
     WINDOW.fill(GRAY)
