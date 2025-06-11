@@ -74,15 +74,18 @@ settings_text_rect = settings_text.get_rect(
     center=(settings_x + settings_width // 2, settings_y + settings_height // 2))
 
 # Stats button
-stats_width = 150
-stats_height = 50
-stats_x = button_x - stats_width - 20  # Shifted left
-stats_y = button_y
-STATS_COLOR = (128, 0, 128)
 stats_font = pygame.font.SysFont(None, 30)
-stats_text = stats_font.render("Stats", True, WHITE)
-stats_text_rect = stats_text.get_rect(
-    center=(stats_x + stats_width // 2, stats_y + stats_height // 2))
+stats_button = Button(
+    x=button_x - 170,
+    y=button_y,
+    w=150,
+    h=50,
+    text="Stats",
+    font=stats_font,
+    base_color=(128, 0, 128),
+    hover_color=(170, 0, 170)
+)
+
 
 # Repair logic
 repairing = False
@@ -103,7 +106,8 @@ clock = pygame.time.Clock()
 running = True
 
 while running:
-    clock.tick(60)  # in FPS
+    clock.tick(60)
+    mouse_pos = pygame.mouse.get_pos()
     # === Event Loop ===
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -141,8 +145,7 @@ while running:
                 print("Settings clicked")
 
             # Stats button
-            elif (stats_x <= mouse_x <= stats_x + stats_width) and (
-                    stats_y <= mouse_y <= stats_y + stats_height):
+            elif stats_button.is_clicked(mouse_pos):
                 print("Stats clicked")
 
         # Progress update
@@ -174,8 +177,7 @@ while running:
     WINDOW.blit(settings_text, settings_text_rect)
 
     # Draw stats button
-    pygame.draw.rect(WINDOW, STATS_COLOR, (stats_x, stats_y, stats_width, stats_height))
-    WINDOW.blit(stats_text, stats_text_rect)
+    stats_button.draw(WINDOW, mouse_pos)
 
     # Progress bar background
     pygame.draw.rect(WINDOW, (100, 100, 100), (button_x, button_y + 60, button_width, 20))
