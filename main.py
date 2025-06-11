@@ -4,6 +4,32 @@ import sys
 # Initialize pygame
 pygame.init()
 
+
+class Button:
+    def __init__(self, x, y, w, h, text, font, base_color, hover_color):
+        self.rect = pygame.Rect(x, y, w, h)
+        self.text = text
+        self.font = font
+        self.base_color = base_color
+        self.hover_color = hover_color
+        self.current_color = base_color
+
+        self.text_surf = self.font.render(self.text, True, (255, 255, 255))
+        self.text_rect = self.text_surf.get_rect(center=self.rect.center)
+
+    def draw(self, surface, mouse_pos):
+        if self.rect.collidepoint(mouse_pos):
+            self.current_color = self.hover_color
+        else:
+            self.current_color = self.base_color
+
+        pygame.draw.rect(surface, self.current_color, self.rect, border_radius=10)
+        surface.blit(self.text_surf, self.text_rect)
+
+    def is_clicked(self, mouse_pos):
+        return self.rect.collidepoint(mouse_pos)
+
+
 # Window
 WIDTH, HEIGHT = 800, 600
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -57,8 +83,6 @@ stats_font = pygame.font.SysFont(None, 30)
 stats_text = stats_font.render("Stats", True, WHITE)
 stats_text_rect = stats_text.get_rect(
     center=(stats_x + stats_width // 2, stats_y + stats_height // 2))
-
-
 
 # Repair logic
 repairing = False
