@@ -73,10 +73,13 @@ while running:
             running = False
         # === MOUSEDOWN LOGIC ===
 
+        # DEV TEST CTRL SHIFT M
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_g:
+            mods = pygame.key.get_mods()
+            if (event.key == pygame.K_m and
+                    mods & pygame.KMOD_CTRL and
+                    mods & pygame.KMOD_SHIFT):
                 money += 100
-                print("Secret money cheat activated!")
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
