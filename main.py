@@ -26,6 +26,17 @@ button_font = pygame.font.SysFont(None, 30)
 button_text = button_font.render("Repair", True, WHITE)
 button_text_rect = button_text.get_rect(center=(button_x + button_width // 2, button_y + button_height // 2))
 
+# Shop button
+shop_x = button_x + button_width + 20
+shop_y = button_y
+shop_width = 150
+shop_height = 50
+SHOP_COLOR = (0, 180, 100)
+shop_font = pygame.font.SysFont(None, 30)
+shop_text = shop_font.render("Shop", True, WHITE)
+shop_text_rect = shop_text.get_rect(center=(shop_x + shop_width // 2, shop_y + shop_height // 2))
+
+
 # Repair logic
 repairing = False
 repair_progress = 0
@@ -59,6 +70,21 @@ while running:
                     button_y <= mouse_y <= button_y + button_height):
                 repairing = True
 
+        # Shop button click logic
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            if (button_x <= mouse_x <= button_x + button_width) and (
+                    button_y <= mouse_y <= button_y + button_height):
+                if repair_progress < 100:
+                    repair_progress += 10
+                else:
+                    repair_progress = 0
+                    money += 10
+
+            elif (shop_x <= mouse_x <= shop_x + shop_width) and (
+                    shop_y <= mouse_y <= shop_y + shop_height):
+                print("Shop clicked")
+
         # Progress update
         if repairing:
             if repair_progress < 100:
@@ -78,6 +104,10 @@ while running:
     # Draw repair button
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
     WINDOW.blit(button_text, button_text_rect)
+
+    # Draw shop button
+    pygame.draw.rect(WINDOW, SHOP_COLOR, (shop_x, shop_y, shop_width, shop_height))
+    WINDOW.blit(shop_text, shop_text_rect)
 
     # Progress bar background
     pygame.draw.rect(WINDOW, (100, 100, 100), (button_x, button_y + 60, button_width, 20))
