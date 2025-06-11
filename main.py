@@ -76,8 +76,8 @@ settings_text_rect = settings_text.get_rect(
 # Stats button
 stats_font = pygame.font.SysFont(None, 30)
 stats_button = Button(
-    x=button_x - 170,
-    y=button_y,
+    x=20,
+    y=HEIGHT - 70,
     w=150,
     h=50,
     text="Stats",
