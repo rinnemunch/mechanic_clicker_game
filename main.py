@@ -23,7 +23,7 @@ class Button:
         else:
             self.current_color = self.base_color
 
-        pygame.draw.rect(surface, self.current_color, self.rect, border_radius=10)
+        pygame.draw.rect(surface, self.current_color, self.rect, border_radius=25)
         surface.blit(self.text_surf, self.text_rect)
 
     def is_clicked(self, mouse_pos):
