@@ -162,8 +162,7 @@ while running:
                     total_money_earned += 10
 
             # Shop button
-            elif (shop_x <= mouse_x <= shop_x + shop_width) and (
-                    shop_y <= mouse_y <= shop_y + shop_height):
+            elif shop_button.is_clicked(mouse_pos):
                 print("Shop clicked")
 
             # Settings button
