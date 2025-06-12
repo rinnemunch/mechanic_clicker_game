@@ -111,8 +111,6 @@ shop_button = Button(
     hover_color=(0, 220, 120)
 )
 
-
-
 # Repair logic
 repairing = False
 repair_progress = 0
@@ -172,8 +170,7 @@ while running:
                 print("Shop clicked")
 
             # Settings button
-            elif (settings_x <= mouse_x <= settings_x + settings_width) and (
-                    settings_y <= mouse_y <= settings_y + settings_height):
+            elif settings_button.is_clicked(mouse_pos):
                 print("Settings clicked")
 
             # Stats button
