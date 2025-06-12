@@ -138,6 +138,7 @@ while running:
                     repair_progress = 0
                     money += 10
                     total_repairs += 1
+                    total_money_earned += 10
 
             # Shop button
             elif (shop_x <= mouse_x <= shop_x + shop_width) and (
