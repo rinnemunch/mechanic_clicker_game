@@ -54,7 +54,7 @@ button_text_rect = button_text.get_rect(center=(button_x + button_width // 2, bu
 
 # Shop button
 shop_x = button_x + button_width + 20
-shop_y = button_y
+shop_y = HEIGHT - 70
 shop_width = 150
 shop_height = 50
 SHOP_COLOR = (0, 180, 100)
