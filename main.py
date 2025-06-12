@@ -58,9 +58,16 @@ shop_y = button_y
 shop_width = 150
 shop_height = 50
 SHOP_COLOR = (0, 180, 100)
-shop_font = pygame.font.SysFont(None, 30)
-shop_text = shop_font.render("Shop", True, WHITE)
-shop_text_rect = shop_text.get_rect(center=(shop_x + shop_width // 2, shop_y + shop_height // 2))
+shop_button = Button(
+    x=shop_x,
+    y=shop_y,
+    w=shop_width,
+    h=shop_height,
+    text="Shop",
+    font=pygame.font.SysFont(None, 30),
+    base_color=(0, 180, 100),
+    hover_color=(0, 220, 120)
+)
 
 # Settings button
 settings_x = shop_x + shop_width + 20
