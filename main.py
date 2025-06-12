@@ -53,10 +53,10 @@ button_text = button_font.render("Repair", True, WHITE)
 button_text_rect = button_text.get_rect(center=(button_x + button_width // 2, button_y + button_height // 2))
 
 # Shop button
-shop_x = button_x + button_width + 20
-shop_y = HEIGHT - 70
 shop_width = 150
 shop_height = 50
+shop_x = WIDTH // 2 - shop_width // 2
+shop_y = HEIGHT - 70
 SHOP_COLOR = (0, 180, 100)
 shop_button = Button(
     x=shop_x,
