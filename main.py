@@ -70,10 +70,10 @@ shop_button = Button(
 )
 
 # Settings button
-settings_x = shop_x + shop_width + 20
-settings_y = button_y
 settings_width = 150
 settings_height = 50
+settings_x = WIDTH - settings_width - 20
+settings_y = HEIGHT - 70
 SETTINGS_COLOR = (180, 180, 0)
 settings_button = Button(
     x=settings_x,
