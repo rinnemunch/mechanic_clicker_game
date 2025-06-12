@@ -98,6 +98,7 @@ money_font = pygame.font.SysFont(None, 36)
 
 # Stats inside
 total_repairs = 0
+total_money_earned = 0
 
 # Font setup
 font = pygame.font.SysFont(None, 36)
