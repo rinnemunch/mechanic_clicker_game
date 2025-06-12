@@ -91,6 +91,7 @@ stats_button = Button(
 repairing = False
 repair_progress = 0
 REPAIR_SPEED = 1
+current_repair_speed = REPAIR_SPEED
 
 # Money
 money = 0
