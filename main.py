@@ -150,7 +150,7 @@ while running:
 
             # Stats button
             elif stats_button.is_clicked(mouse_pos):
-                print("Stats clicked")
+                show_stats_screen(total_repairs)
 
         # Progress update
         if repairing:
