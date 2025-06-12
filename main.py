@@ -96,6 +96,9 @@ REPAIR_SPEED = 1
 money = 0
 money_font = pygame.font.SysFont(None, 36)
 
+# Stats inside
+total_repairs = 0
+
 # Font setup
 font = pygame.font.SysFont(None, 36)
 text_surface = font.render("Car", True, WHITE)
