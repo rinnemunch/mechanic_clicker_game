@@ -93,6 +93,19 @@ stats_button = Button(
     hover_color=(170, 0, 170)
 )
 
+# Shop button
+shop_button = Button(
+    x=shop_x,
+    y=shop_y,
+    w=shop_width,
+    h=shop_height,
+    text="Shop",
+    font=pygame.font.SysFont(None, 30),
+    base_color=(0, 180, 100),
+    hover_color=(0, 220, 120)
+)
+
+
 
 # Repair logic
 repairing = False
