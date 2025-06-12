@@ -195,8 +195,7 @@ while running:
     WINDOW.blit(button_text, button_text_rect)
 
     # Draw shop button
-    pygame.draw.rect(WINDOW, SHOP_COLOR, (shop_x, shop_y, shop_width, shop_height))
-    WINDOW.blit(shop_text, shop_text_rect)
+    shop_button.draw(WINDOW, mouse_pos)
 
     # Draw settings button
     pygame.draw.rect(WINDOW, SETTINGS_COLOR, (settings_x, settings_y, settings_width, settings_height))
