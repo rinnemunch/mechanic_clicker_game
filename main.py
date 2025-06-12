@@ -197,5 +197,28 @@ while running:
     # Update display
     pygame.display.flip()
 
+    # === Show Stats Screen ===
+    def show_stats_screen(total_repairs):
+        stats_running = True
+        while stats_running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                    stats_running = False
+
+            WINDOW.fill((30, 30, 30))
+
+            title = font.render("Stats", True, WHITE)
+            stats = font.render(f"Total Repairs: {total_repairs}", True, WHITE)
+            tip = pygame.font.SysFont(None, 24).render("Press ESC to go back", True, (200, 200, 200))
+
+            WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
+            WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 200))
+            WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
+
+            pygame.display.flip()
+
 pygame.quit()
 sys.exit()
