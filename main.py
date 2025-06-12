@@ -75,10 +75,7 @@ settings_y = button_y
 settings_width = 150
 settings_height = 50
 SETTINGS_COLOR = (180, 180, 0)
-settings_font = pygame.font.SysFont(None, 30)
-settings_text = settings_font.render("Settings", True, WHITE)
-settings_text_rect = settings_text.get_rect(
-    center=(settings_x + settings_width // 2, settings_y + settings_height // 2))
+
 
 # Stats button
 stats_font = pygame.font.SysFont(None, 30)
