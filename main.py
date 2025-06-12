@@ -152,7 +152,7 @@ while running:
 
             # Stats button
             elif stats_button.is_clicked(mouse_pos):
-                show_stats_screen(total_repairs)
+                show_stats_screen(total_repairs, total_money_earned)
 
         # Progress update
         if repairing:
@@ -200,7 +200,7 @@ while running:
     pygame.display.flip()
 
     # === Show Stats Screen ===
-    def show_stats_screen(total_repairs):
+    def show_stats_screen(total_repairs, total_money_earned):
         stats_running = True
         while stats_running:
             for event in pygame.event.get():
@@ -214,10 +214,12 @@ while running:
 
             title = font.render("Stats", True, WHITE)
             stats = font.render(f"Total Repairs: {total_repairs}", True, WHITE)
+            money_stat = font.render(f"Total Money Earned: ${total_money_earned}", True, WHITE)
             tip = pygame.font.SysFont(None, 24).render("Press ESC to go back", True, (200, 200, 200))
 
             WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
             WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 200))
+            WINDOW.blit(money_stat, (WIDTH // 2 - money_stat.get_width() // 2, 260))
             WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
 
             pygame.display.flip()
