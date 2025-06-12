@@ -136,6 +136,7 @@ while running:
                 else:
                     repair_progress = 0
                     money += 10
+                    total_repairs += 1
 
             # Shop button
             elif (shop_x <= mouse_x <= shop_x + shop_width) and (
