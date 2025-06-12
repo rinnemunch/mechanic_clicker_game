@@ -75,7 +75,16 @@ settings_y = button_y
 settings_width = 150
 settings_height = 50
 SETTINGS_COLOR = (180, 180, 0)
-
+settings_button = Button(
+    x=settings_x,
+    y=settings_y,
+    w=settings_width,
+    h=settings_height,
+    text="Settings",
+    font=pygame.font.SysFont(None, 30),
+    base_color=(180, 180, 0),
+    hover_color=(220, 220, 0)
+)
 
 # Stats button
 stats_font = pygame.font.SysFont(None, 30)
