@@ -18,6 +18,7 @@ ui_click_sound = pygame.mixer.Sound("assets/ui_click.wav")
 shop_upgrade_sound = pygame.mixer.Sound("assets/shop_upgrade.wav")
 sound_enabled = True
 
+
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
         self.rect = pygame.Rect(x, y, w, h)
@@ -205,7 +206,6 @@ sound_toggle_button = Button(
     hover_color=(140, 140, 255)
 )
 
-
 # Repair logic
 repairing = False
 repair_progress = 0
@@ -227,6 +227,49 @@ total_money_earned = 0
 font = pygame.font.SysFont(None, 36)
 text_surface = font.render("Car", True, WHITE)
 text_rect = text_surface.get_rect(center=(car_x + car_width // 2, car_y + car_height // 2))
+
+
+def show_settings_screen():
+    global sound_enabled
+
+    settings_running = True
+    while settings_running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                settings_running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if sound_toggle_button.is_clicked(pygame.mouse.get_pos()):
+                    sound_enabled = not sound_enabled
+                    if sound_enabled:
+                        sound_toggle_button.text = "Sound: On"
+                        if sound_enabled:
+                            ui_click_sound.play()
+                    else:
+                        sound_toggle_button.text = "Sound: Off"
+
+                    # Re-render updated text
+                    sound_toggle_button.text_surf = sound_toggle_button.font.render(
+                        sound_toggle_button.text, True, (255, 255, 255)
+                    )
+                    sound_toggle_button.text_rect = sound_toggle_button.text_surf.get_rect(
+                        center=sound_toggle_button.rect.center
+                    )
+
+        # Background and text
+        WINDOW.fill((25, 25, 25))
+        title = font.render("Settings", True, WHITE)
+        tip = pygame.font.SysFont(None, 24).render("Press ESC to return", True, (200, 200, 200))
+        WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
+        WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
+
+        # Draw sound toggle
+        sound_toggle_button.draw(WINDOW, pygame.mouse.get_pos())
+
+        pygame.display.flip()
+
 
 # === Main loop ===
 clock = pygame.time.Clock()
