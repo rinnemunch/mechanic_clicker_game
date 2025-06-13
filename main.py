@@ -193,6 +193,19 @@ stats_button = Button(
     hover_color=(170, 0, 170)
 )
 
+# Sounds Toggle Button
+sound_toggle_button = Button(
+    x=WIDTH // 2 - 100,
+    y=250,
+    w=200,
+    h=50,
+    text="Sound: On",
+    font=pygame.font.SysFont(None, 30),
+    base_color=(100, 100, 255),
+    hover_color=(140, 140, 255)
+)
+
+
 # Repair logic
 repairing = False
 repair_progress = 0
