@@ -176,6 +176,7 @@ while running:
                     money += 10
                     total_repairs += 1
                     total_money_earned += 10
+                    repair_complete_sound.play()
 
             # Shop button
             elif shop_button.is_clicked(mouse_pos):
