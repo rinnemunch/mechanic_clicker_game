@@ -16,6 +16,7 @@ repair_sounds = [
 repair_complete_sound = pygame.mixer.Sound("assets/repair_complete.wav")
 ui_click_sound = pygame.mixer.Sound("assets/ui_click.wav")
 
+
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
         self.rect = pygame.Rect(x, y, w, h)
@@ -125,8 +126,11 @@ shop_button = Button(
 # Repair logic
 repairing = False
 repair_progress = 0
-REPAIR_SPEED = 1
+REPAIR_SPEED = repair_upgrade_level
 current_repair_speed = REPAIR_SPEED
+repair_upgrade_level = 1
+max_repair_level = 10
+upgrade_cost = 25
 
 # Money
 money = 0
