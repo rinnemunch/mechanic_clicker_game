@@ -14,7 +14,7 @@ repair_sounds = [
     pygame.mixer.Sound("assets/ratchet3.wav")
 ]
 repair_complete_sound = pygame.mixer.Sound("assets/repair_complete.wav")
-
+ui_click_sound = pygame.mixer.Sound("assets/ui_click.wav")
 
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
