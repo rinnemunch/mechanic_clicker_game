@@ -316,14 +316,11 @@ while running:
                     ui_click_sound.play()
                 show_shop_screen()
 
-
-
             # Settings button
             elif settings_button.is_clicked(mouse_pos):
                 if sound_enabled:
                     ui_click_sound.play()
                 show_settings_screen()
-
 
             # Stats button
             elif stats_button.is_clicked(mouse_pos):
@@ -369,9 +366,6 @@ while running:
     # Draw money text
     money_text = money_font.render(f"${money}", True, WHITE)
     WINDOW.blit(money_text, (20, 20))
-
-    sound_status = font.render(f"Sound: {'On' if sound_enabled else 'Off'}", True, WHITE)
-    WINDOW.blit(sound_status, (WIDTH - 160, 20))
 
     # Update display
     pygame.display.flip()
