@@ -126,11 +126,11 @@ shop_button = Button(
 # Repair logic
 repairing = False
 repair_progress = 0
-REPAIR_SPEED = repair_upgrade_level
-current_repair_speed = REPAIR_SPEED
 repair_upgrade_level = 1
 max_repair_level = 10
 upgrade_cost = 25
+REPAIR_SPEED = repair_upgrade_level
+current_repair_speed = REPAIR_SPEED
 
 # Money
 money = 0
@@ -184,8 +184,16 @@ while running:
 
             # Shop button
             elif shop_button.is_clicked(mouse_pos):
+                if repair_upgrade_level < max_repair_level and money >= upgrade_cost:
+                    money -= upgrade_cost
+                    repair_upgrade_level += 1
+                    REPAIR_SPEED = repair_upgrade_level
+                    upgrade_cost += 25
+                    print(f"Upgrade successful! Speed: {REPAIR_SPEED}, Next Cost: {upgrade_cost}")
+                else:
+                    print("Not enough money or max level reached")
                 ui_click_sound.play()
-                print("Shop clicked")
+
 
             # Settings button
             elif settings_button.is_clicked(mouse_pos):
