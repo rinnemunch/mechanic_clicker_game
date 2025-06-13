@@ -51,7 +51,9 @@ def handle_upgrade():
         REPAIR_SPEED = repair_upgrade_level
         upgrade_cost += 25
         print(f"Upgraded to level {repair_upgrade_level}. New speed: {REPAIR_SPEED}")
-        shop_upgrade_sound.play()
+        if sound_enabled:
+            shop_upgrade_sound.play()
+
     else:
         print("Not enough money or already maxed")
 
@@ -242,17 +244,20 @@ while running:
                     button_y <= mouse_y <= button_y + button_height):
                 if repair_progress < 100:
                     repair_progress += 10
-                    random.choice(repair_sounds).play()
+                    if sound_enabled:
+                        random.choice(repair_sounds).play()
                 else:
                     repair_progress = 0
                     money += 10
                     total_repairs += 1
                     total_money_earned += 10
-                    repair_complete_sound.play()
+                    if sound_enabled:
+                        repair_complete_sound.play()
 
             # Shop button
             elif shop_button.is_clicked(mouse_pos):
-                ui_click_sound.play()
+                if sound_enabled:
+                    ui_click_sound.play()
                 show_shop_screen()
 
 
