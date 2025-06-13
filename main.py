@@ -1,11 +1,17 @@
 import pygame
 import sys
+import random
 
 # Initialize pygame
 pygame.init()
 
 pygame.mixer.init()
-repair_sound = pygame.mixer.Sound("assets/ratchet1.wav")
+
+# Sound effects
+repair_sounds = [
+    pygame.mixer.Sound("assets/ratchet1.wav"),
+    pygame.mixer.Sound("assets/ratchet2.wav"),
+]
 
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
