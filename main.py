@@ -52,7 +52,7 @@ def handle_upgrade():
         REPAIR_SPEED = repair_upgrade_level
         upgrade_cost += 25
         print(f"Upgraded to level {repair_upgrade_level}. New speed: {REPAIR_SPEED}")
-        ui_click_sound.play()
+        shop_upgrade_sound.play()
     else:
         print("Not enough money or already maxed")
 
