@@ -161,6 +161,7 @@ while running:
                     button_y <= mouse_y <= button_y + button_height):
                 if repair_progress < 100:
                     repair_progress += 10
+                    repair_sound.play()
                 else:
                     repair_progress = 0
                     money += 10
