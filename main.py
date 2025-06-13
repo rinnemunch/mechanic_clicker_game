@@ -264,7 +264,6 @@ while running:
 
             # Settings button
             elif settings_button.is_clicked(mouse_pos):
-                global sound_enabled
                 sound_enabled = not sound_enabled
                 print("Sound Enabled:", sound_enabled)
                 if sound_enabled:
