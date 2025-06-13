@@ -4,6 +4,8 @@ import sys
 # Initialize pygame
 pygame.init()
 
+pygame.mixer.init()
+repair_sound = pygame.mixer.Sound("assets/ratchet1.wav")
 
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
