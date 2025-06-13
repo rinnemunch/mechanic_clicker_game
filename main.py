@@ -315,6 +315,9 @@ while running:
     money_text = money_font.render(f"${money}", True, WHITE)
     WINDOW.blit(money_text, (20, 20))
 
+    sound_status = font.render(f"Sound: {'On' if sound_enabled else 'Off'}", True, WHITE)
+    WINDOW.blit(sound_status, (WIDTH - 160, 20))
+
     # Update display
     pygame.display.flip()
 
