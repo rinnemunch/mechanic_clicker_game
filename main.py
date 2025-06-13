@@ -180,14 +180,17 @@ while running:
 
             # Shop button
             elif shop_button.is_clicked(mouse_pos):
+                ui_click_sound.play()
                 print("Shop clicked")
 
             # Settings button
             elif settings_button.is_clicked(mouse_pos):
+                ui_click_sound.play()
                 print("Settings clicked")
 
             # Stats button
             elif stats_button.is_clicked(mouse_pos):
+                ui_click_sound.play()
                 show_stats_screen(total_repairs, total_money_earned, current_repair_speed)
 
         # Progress update
