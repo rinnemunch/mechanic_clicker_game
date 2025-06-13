@@ -13,6 +13,7 @@ repair_sounds = [
     pygame.mixer.Sound("assets/ratchet2.wav"),
     pygame.mixer.Sound("assets/ratchet3.wav")
 ]
+repair_complete_sound = pygame.mixer.Sound("assets/repair_complete.wav")
 
 
 class Button:
