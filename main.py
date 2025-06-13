@@ -11,7 +11,9 @@ pygame.mixer.init()
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
     pygame.mixer.Sound("assets/ratchet2.wav"),
+    pygame.mixer.Sound("assets/ratchet3.wav")
 ]
+
 
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
@@ -228,6 +230,7 @@ while running:
 
     # Update display
     pygame.display.flip()
+
 
     # === Show Stats Screen ===
     def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
