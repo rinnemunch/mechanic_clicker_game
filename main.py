@@ -264,8 +264,11 @@ while running:
 
             # Settings button
             elif settings_button.is_clicked(mouse_pos):
-                ui_click_sound.play()
-                print("Settings clicked")
+                global sound_enabled
+                sound_enabled = not sound_enabled
+                print("Sound Enabled:", sound_enabled)
+                if sound_enabled:
+                    ui_click_sound.play()
 
             # Stats button
             elif stats_button.is_clicked(mouse_pos):
