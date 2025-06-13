@@ -42,6 +42,83 @@ class Button:
         return self.rect.collidepoint(mouse_pos)
 
 
+def handle_upgrade():
+    global money, repair_upgrade_level, REPAIR_SPEED, upgrade_cost
+    if repair_upgrade_level < max_repair_level and money >= upgrade_cost:
+        money -= upgrade_cost
+        repair_upgrade_level += 1
+        REPAIR_SPEED = repair_upgrade_level
+        upgrade_cost += 25
+        print(f"Upgraded to level {repair_upgrade_level}. New speed: {REPAIR_SPEED}")
+        ui_click_sound.play()
+    else:
+        print("Not enough money or already maxed")
+
+    # === Show Stats Screen ===
+def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
+    stats_running = True
+    while stats_running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                stats_running = False
+
+        WINDOW.fill((30, 30, 30))
+
+        title = font.render("Stats", True, WHITE)
+        stats = font.render(f"Total Repairs: {total_repairs}", True, WHITE)
+        money_stat = font.render(f"Total Money Earned: ${total_money_earned}", True, WHITE)
+        speed_stat = font.render(f"Repair Speed: {current_repair_speed}", True, WHITE)
+        tip = pygame.font.SysFont(None, 24).render("Press ESC to go back", True, (200, 200, 200))
+
+        WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
+        WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 200))
+        WINDOW.blit(money_stat, (WIDTH // 2 - money_stat.get_width() // 2, 260))
+        WINDOW.blit(speed_stat, (WIDTH // 2 - speed_stat.get_width() // 2, 320))
+        WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
+
+        pygame.display.flip()
+
+
+def show_shop_screen():
+    global upgrade_button_rect
+
+    shop_running = True
+    while shop_running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                shop_running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse = pygame.mouse.get_pos()
+                if upgrade_button_rect.collidepoint(mouse):
+                    handle_upgrade()
+
+        # Background
+        WINDOW.fill((20, 20, 20))
+
+        # Title
+        title = font.render("Shop", True, WHITE)
+        WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 50))
+
+        # Upgrade button
+        upgrade_text = f"Upgrade Repair Speed (Lvl {repair_upgrade_level}/{max_repair_level}) - ${upgrade_cost}"
+        upgrade_surface = font.render(upgrade_text, True, WHITE)
+        upgrade_button_rect = upgrade_surface.get_rect(center=(WIDTH // 2, 200))
+        pygame.draw.rect(WINDOW, (0, 100, 255), upgrade_button_rect.inflate(20, 10), border_radius=10)
+        WINDOW.blit(upgrade_surface, upgrade_button_rect)
+
+        # Tip
+        tip = pygame.font.SysFont(None, 24).render("Press ESC to return", True, (200, 200, 200))
+        WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
+
+        pygame.display.flip()
+
+
 # Window
 WIDTH, HEIGHT = 800, 600
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -109,18 +186,6 @@ stats_button = Button(
     font=stats_font,
     base_color=(128, 0, 128),
     hover_color=(170, 0, 170)
-)
-
-# Shop button
-shop_button = Button(
-    x=shop_x,
-    y=shop_y,
-    w=shop_width,
-    h=shop_height,
-    text="Shop",
-    font=pygame.font.SysFont(None, 30),
-    base_color=(0, 180, 100),
-    hover_color=(0, 220, 120)
 )
 
 # Repair logic
@@ -241,69 +306,6 @@ while running:
 
     # Update display
     pygame.display.flip()
-
-    # === Show Stats Screen ===
-    def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
-        stats_running = True
-        while stats_running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    stats_running = False
-
-            WINDOW.fill((30, 30, 30))
-
-            title = font.render("Stats", True, WHITE)
-            stats = font.render(f"Total Repairs: {total_repairs}", True, WHITE)
-            money_stat = font.render(f"Total Money Earned: ${total_money_earned}", True, WHITE)
-            speed_stat = font.render(f"Repair Speed: {current_repair_speed}", True, WHITE)
-            tip = pygame.font.SysFont(None, 24).render("Press ESC to go back", True, (200, 200, 200))
-
-            WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
-            WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 200))
-            WINDOW.blit(money_stat, (WIDTH // 2 - money_stat.get_width() // 2, 260))
-            WINDOW.blit(speed_stat, (WIDTH // 2 - speed_stat.get_width() // 2, 320))
-            WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
-
-            pygame.display.flip()
-
-
-    def show_shop_screen():
-        shop_running = True
-        while shop_running:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    sys.exit()
-                if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                    shop_running = False
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    mouse = pygame.mouse.get_pos()
-                    if upgrade_button_rect.collidepoint(mouse):
-                        handle_upgrade()
-
-            # Background
-            WINDOW.fill((20, 20, 20))
-
-            # Title
-            title = font.render("Shop", True, WHITE)
-            WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 50))
-
-            # Upgrade button
-            upgrade_text = f"Upgrade Repair Speed (Lvl {repair_upgrade_level}/{max_repair_level}) - ${upgrade_cost}"
-            upgrade_surface = font.render(upgrade_text, True, WHITE)
-            global upgrade_button_rect
-            upgrade_button_rect = upgrade_surface.get_rect(center=(WIDTH // 2, 200))
-            pygame.draw.rect(WINDOW, (0, 100, 255), upgrade_button_rect.inflate(20, 10), border_radius=10)
-            WINDOW.blit(upgrade_surface, upgrade_button_rect)
-
-            # Tip
-            tip = pygame.font.SysFont(None, 24).render("Press ESC to return", True, (200, 200, 200))
-            WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
-
-            pygame.display.flip()
 
 pygame.quit()
 sys.exit()
