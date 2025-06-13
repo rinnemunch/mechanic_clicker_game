@@ -16,8 +16,7 @@ repair_sounds = [
 repair_complete_sound = pygame.mixer.Sound("assets/repair_complete.wav")
 ui_click_sound = pygame.mixer.Sound("assets/ui_click.wav")
 shop_upgrade_sound = pygame.mixer.Sound("assets/shop_upgrade.wav")
-
-
+sound_enabled = True
 
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
@@ -57,6 +56,8 @@ def handle_upgrade():
         print("Not enough money or already maxed")
 
     # === Show Stats Screen ===
+
+
 def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
     stats_running = True
     while stats_running:
