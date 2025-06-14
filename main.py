@@ -19,6 +19,7 @@ ui_click_sound = pygame.mixer.Sound("assets/ui_click.wav")
 shop_upgrade_sound = pygame.mixer.Sound("assets/shop_upgrade.wav")
 sound_enabled = True
 
+
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
         self.rect = pygame.Rect(x, y, w, h)
@@ -57,6 +58,20 @@ def handle_upgrade():
 
     else:
         print("Not enough money or already maxed")
+
+
+def handle_passive_upgrade():
+    global money, passive_income_level, passive_income_amount, passive_upgrade_cost
+    if passive_income_level < max_passive_level and money >= passive_upgrade_cost:
+        money -= passive_upgrade_cost
+        passive_income_level += 1
+        passive_income_amount += 1  # amount earned in seconds
+        passive_upgrade_cost += 75
+        if sound_enabled:
+            shop_upgrade_sound.play()
+        print(f"Passive Income Level: {passive_income_level}")
+    else:
+        print("Not enough money or max level reached.")
 
     # === Show Stats Screen ===
 
@@ -151,7 +166,6 @@ for filename in os.listdir("assets/cars"):
         car_sprites.append(img)
 
 current_car = random.choice(car_sprites)
-
 
 # Colors
 WHITE = (255, 255, 255)
