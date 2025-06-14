@@ -357,7 +357,9 @@ while running:
 
     # Draw car
     if current_car == car_sprites[0]:
-        WINDOW.blit(current_car, (car_x, car_y + 15))
+        WINDOW.blit(current_car, (car_x, car_y + 20))
+    elif current_car == car_sprites[1]:
+        WINDOW.blit(current_car, (car_x, car_y + 20))
     else:
         WINDOW.blit(current_car, (car_x, car_y))
 
