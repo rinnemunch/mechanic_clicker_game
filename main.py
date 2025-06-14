@@ -132,6 +132,9 @@ pygame.display.set_caption("Mechanic Clicker")
 main_background = pygame.image.load("assets/main_bg.png").convert()
 main_background = pygame.transform.scale(main_background, (WIDTH, HEIGHT))
 
+car_image = pygame.image.load("assets/cars/mclaren_8bit.png").convert_alpha()
+car_image = pygame.transform.scale(car_image, (200, 100))
+
 # Colors
 WHITE = (255, 255, 255)
 GRAY = (50, 50, 50)
@@ -341,9 +344,8 @@ while running:
     # Fill background
     WINDOW.blit(main_background, (0, 0))
 
-    # Draw car placeholder (rectangle)
-    pygame.draw.rect(WINDOW, CAR_COLOR, (car_x, car_y, car_width, car_height))
-    WINDOW.blit(text_surface, text_rect)
+    # Draw car
+    WINDOW.blit(car_image, (car_x, car_y))
 
     # Draw repair button
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
