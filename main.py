@@ -1,6 +1,7 @@
 import pygame
 import sys
 import random
+import os
 
 # Initialize pygame
 pygame.init()
@@ -132,8 +133,16 @@ pygame.display.set_caption("Mechanic Clicker")
 main_background = pygame.image.load("assets/main_bg.png").convert()
 main_background = pygame.transform.scale(main_background, (WIDTH, HEIGHT))
 
-car_image = pygame.image.load("assets/cars/mclaren_8bit.png").convert_alpha()
-car_image = pygame.transform.scale(car_image, (340, 240))
+# Loading Car Sprites
+car_sprites = []
+for filename in os.listdir("assets/cars"):
+    if filename.endswith(".png"):
+        img = pygame.image.load(os.path.join("assets/cars", filename)).convert_alpha()
+        img = pygame.transform.scale(img, (340, 240))
+        car_sprites.append(img)
+
+current_car = random.choice(car_sprites)
+
 
 # Colors
 WHITE = (255, 255, 255)
@@ -219,6 +228,7 @@ max_repair_level = 10
 upgrade_cost = 25
 REPAIR_SPEED = repair_upgrade_level
 current_repair_speed = REPAIR_SPEED
+current_car = random.choice(car_sprites)
 
 # Money
 money = 0
@@ -345,7 +355,7 @@ while running:
     WINDOW.blit(main_background, (0, 0))
 
     # Draw car
-    WINDOW.blit(car_image, (car_x, car_y))
+    WINDOW.blit(current_car, (car_x, car_y))
 
     # Draw repair button
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
