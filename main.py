@@ -323,6 +323,12 @@ running = True
 while running:
     clock.tick(60)
     mouse_pos = pygame.mouse.get_pos()
+    now = pygame.time.get_ticks()
+    if now - last_passive_tick >= 1000:
+        money += passive_income_amount
+        total_money_earned += passive_income_amount
+        last_passive_tick = now
+
     # === Event Loop ===
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
