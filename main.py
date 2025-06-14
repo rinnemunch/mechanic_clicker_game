@@ -103,6 +103,8 @@ def show_shop_screen():
                 mouse = pygame.mouse.get_pos()
                 if upgrade_button_rect.collidepoint(mouse):
                     handle_upgrade()
+                if passive_button_rect.collidepoint(mouse):
+                    handle_passive_upgrade()
 
         # Background
         WINDOW.fill((20, 20, 20))
@@ -117,6 +119,13 @@ def show_shop_screen():
         upgrade_button_rect = upgrade_surface.get_rect(center=(WIDTH // 2, 200))
         pygame.draw.rect(WINDOW, (0, 100, 255), upgrade_button_rect.inflate(20, 10), border_radius=10)
         WINDOW.blit(upgrade_surface, upgrade_button_rect)
+
+        # Passive income upgrade button
+        passive_text = f"Add Garage Upgrade (Lvl {passive_income_level}/{max_passive_level}) - ${passive_upgrade_cost}"
+        passive_surface = font.render(passive_text, True, WHITE)
+        passive_button_rect = passive_surface.get_rect(center=(WIDTH // 2, 300))
+        pygame.draw.rect(WINDOW, (255, 140, 0), passive_button_rect.inflate(20, 10), border_radius=10)
+        WINDOW.blit(passive_surface, passive_button_rect)
 
         # Tip
         tip = pygame.font.SysFont(None, 24).render("Press ESC to return", True, (200, 200, 200))
