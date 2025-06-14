@@ -152,6 +152,8 @@ def show_shop_screen():
 # Window
 WIDTH, HEIGHT = 800, 600
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
+flag_img = pygame.image.load("assets/garage_upgrades/flag.png").convert_alpha()
+flag_img = pygame.transform.scale(flag_img, (100, 100))
 pygame.display.set_caption("Mechanic Clicker")
 
 main_background = pygame.image.load("assets/main_bg.png").convert()
@@ -398,6 +400,9 @@ while running:
         WINDOW.blit(current_car, (car_x, car_y + 20))
     else:
         WINDOW.blit(current_car, (car_x, car_y))
+
+    if passive_income_level >= 1:
+        WINDOW.blit(flag_img, (50, 60))
 
     # Draw repair button
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
