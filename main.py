@@ -230,6 +230,13 @@ REPAIR_SPEED = repair_upgrade_level
 current_repair_speed = REPAIR_SPEED
 current_car = random.choice(car_sprites)
 
+# Passive income
+passive_income_level = 0
+max_passive_level = 10
+passive_income_amount = 0
+passive_upgrade_cost = 100
+last_passive_tick = pygame.time.get_ticks()
+
 # Money
 money = 0
 money_font = pygame.font.SysFont(None, 48)
