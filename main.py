@@ -133,15 +133,15 @@ main_background = pygame.image.load("assets/main_bg.png").convert()
 main_background = pygame.transform.scale(main_background, (WIDTH, HEIGHT))
 
 car_image = pygame.image.load("assets/cars/mclaren_8bit.png").convert_alpha()
-car_image = pygame.transform.scale(car_image, (200, 100))
+car_image = pygame.transform.scale(car_image, (340, 240))
 
 # Colors
 WHITE = (255, 255, 255)
 GRAY = (50, 50, 50)
 CAR_COLOR = (200, 0, 0)
 
-# Car placeholder
-car_x, car_y = 300, 200
+# Car
+car_x, car_y = 250, 150
 car_width, car_height = 200, 100
 
 # Repair button
