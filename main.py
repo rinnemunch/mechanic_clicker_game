@@ -322,6 +322,7 @@ while running:
                     money += 10
                     total_repairs += 1
                     total_money_earned += 10
+                    current_car = random.choice(car_sprites)
                     if sound_enabled:
                         repair_complete_sound.play()
 
