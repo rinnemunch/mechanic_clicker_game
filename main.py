@@ -366,7 +366,8 @@ while running:
     pygame.draw.rect(WINDOW, (0, 255, 0), (button_x, button_y + 60, fill_width, 20))
 
     # Draw money text
-    money_text = money_font.render(f"${money}", True, WHITE)
+    color = (0, 255, 0) if money > 0 else (255, 0, 0)
+    money_text = money_font.render(f"${money}", True, color)
     money_rect = money_text.get_rect(center=(WIDTH // 2, 30))
     WINDOW.blit(money_text, money_rect)
 
