@@ -356,7 +356,10 @@ while running:
     WINDOW.blit(main_background, (0, 0))
 
     # Draw car
-    WINDOW.blit(current_car, (car_x, car_y))
+    if current_car == car_sprites[0]:
+        WINDOW.blit(current_car, (car_x, car_y + 15))
+    else:
+        WINDOW.blit(current_car, (car_x, car_y))
 
     # Draw repair button
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
