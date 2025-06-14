@@ -18,7 +18,6 @@ ui_click_sound = pygame.mixer.Sound("assets/ui_click.wav")
 shop_upgrade_sound = pygame.mixer.Sound("assets/shop_upgrade.wav")
 sound_enabled = True
 
-
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
         self.rect = pygame.Rect(x, y, w, h)
@@ -129,6 +128,9 @@ def show_shop_screen():
 WIDTH, HEIGHT = 800, 600
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Mechanic Clicker")
+
+main_background = pygame.image.load("assets/main_bg.png").convert()
+main_background = pygame.transform.scale(main_background, (WIDTH, HEIGHT))
 
 # Colors
 WHITE = (255, 255, 255)
@@ -337,7 +339,7 @@ while running:
                 money += 10
 
     # Fill background
-    WINDOW.fill(GRAY)
+    WINDOW.blit(main_background, (0, 0))
 
     # Draw car placeholder (rectangle)
     pygame.draw.rect(WINDOW, CAR_COLOR, (car_x, car_y, car_width, car_height))
