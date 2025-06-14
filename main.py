@@ -219,7 +219,7 @@ current_repair_speed = REPAIR_SPEED
 
 # Money
 money = 0
-money_font = pygame.font.SysFont(None, 36)
+money_font = pygame.font.SysFont(None, 48)
 
 # Stats inside
 total_repairs = 0
@@ -367,7 +367,8 @@ while running:
 
     # Draw money text
     money_text = money_font.render(f"${money}", True, WHITE)
-    WINDOW.blit(money_text, (20, 20))
+    money_rect = money_text.get_rect(center=(WIDTH // 2, 30))
+    WINDOW.blit(money_text, money_rect)
 
     # Update display
     pygame.display.flip()
