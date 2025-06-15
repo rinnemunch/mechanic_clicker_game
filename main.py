@@ -14,7 +14,6 @@ background_tracks = [
     "assets/music/track2.mp3"
 ]
 
-
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
@@ -79,6 +78,12 @@ def handle_passive_upgrade():
         print(f"Passive Income Level: {passive_income_level}")
     else:
         print("Not enough money or max level reached.")
+
+# Looping through background tracks
+def play_random_track():
+    track = random.choice(background_tracks)
+    pygame.mixer.music.load(track)
+    pygame.mixer.music.play()
 
     # === Show Stats Screen ===
 
@@ -187,9 +192,7 @@ car_sprites.append(load_car("green_sportscar.png", (340, 240), 28))
 car_sprites.append(load_car("mclaren_8bit.png", (340, 240), 0))
 car_sprites.append(load_car("miata.png", (340, 240), 20))
 
-
 current_car, car_offset = random.choice(car_sprites)
-
 
 # Colors
 WHITE = (255, 255, 255)
