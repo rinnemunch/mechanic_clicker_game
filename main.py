@@ -171,6 +171,7 @@ board_img = pygame.transform.scale(board_img, (100, 100))
 clock_img = pygame.image.load("assets/garage_upgrades/clock.png").convert_alpha()
 clock_img = pygame.transform.scale(clock_img, (100, 100))
 pygame.display.set_caption("Mechanic Clicker")
+play_random_track()
 
 main_background = pygame.image.load("assets/main_bg.png").convert()
 main_background = pygame.transform.scale(main_background, (WIDTH, HEIGHT))
