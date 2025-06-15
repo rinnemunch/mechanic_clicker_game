@@ -16,7 +16,7 @@ background_tracks = [
     "assets/music/track2.mp3"
 ]
 
-# Money animation
+# Money animation (Be aware that I switched from confetti to money pngs)
 confetti_frames = []
 confetti_path = "assets/money/money_trimmed"
 
@@ -463,7 +463,7 @@ while running:
                 confetti_timer = current_time
                 confetti_index += 1
             if confetti_index < len(confetti_frames):
-                WINDOW.blit(confetti_frames[confetti_index], (car_x - 30, car_y - 10))  # Adjustable
+                WINDOW.blit(confetti_frames[confetti_index], (car_x - 60, car_y - 10))  # Adjustable
         else:
             show_confetti = False
 
