@@ -14,6 +14,17 @@ background_tracks = [
     "assets/music/track2.mp3"
 ]
 
+# Confetti
+confetti_frames = []
+confetti_path = "assets/confetti/frames_trimmed"
+
+for filename in sorted(os.listdir(confetti_path)):
+    if filename.endswith(".png"):
+        img = pygame.image.load(os.path.join(confetti_path, filename)).convert_alpha()
+        img = pygame.transform.scale(img, (150, 150))  # Adjustable
+        confetti_frames.append(img)
+
+
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
