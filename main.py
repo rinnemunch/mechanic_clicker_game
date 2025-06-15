@@ -42,6 +42,7 @@ repair_complete_sound = pygame.mixer.Sound("assets/repair_complete.wav")
 ui_click_sound = pygame.mixer.Sound("assets/ui_click.wav")
 shop_upgrade_sound = pygame.mixer.Sound("assets/shop_upgrade.wav")
 sound_enabled = True
+repair_channel = pygame.mixer.Channel(1)
 
 
 class Button:
@@ -418,7 +419,8 @@ while running:
                     confetti_index = 0
                     confetti_timer = pygame.time.get_ticks()
                     if sound_enabled:
-                        repair_complete_sound.play()
+                        repair_channel.play(repair_complete_sound)
+
 
             # Shop button
             elif shop_button.is_clicked(mouse_pos):
