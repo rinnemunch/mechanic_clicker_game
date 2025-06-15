@@ -405,15 +405,10 @@ while running:
     WINDOW.blit(main_background, (0, 0))
 
     # Draw car
-    WINDOW.blit(current_car, (car_x, car_y + car_offset))
-    # Custom shifts
-    if current_car == car_sprites[2][0]:
-        WINDOW.blit(current_car, (car_x - 15, car_y + car_offset))
+    if current_car == car_sprites[2][0]:  # Cybertruck
+        WINDOW.blit(current_car, (car_x - 30, car_y + car_offset))
     else:
         WINDOW.blit(current_car, (car_x, car_y + car_offset))
-
-    if passive_income_level >= 1:
-        WINDOW.blit(flag_img, (50, 60))
 
     # Draw repair button
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
