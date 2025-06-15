@@ -71,18 +71,19 @@ class Button:
 
 
 def handle_upgrade():
-    global money, repair_upgrade_level, REPAIR_SPEED, upgrade_cost
+    global money, repair_upgrade_level, REPAIR_SPEED, upgrade_cost, current_repair_speed
     if repair_upgrade_level < max_repair_level and money >= upgrade_cost:
         money -= upgrade_cost
         repair_upgrade_level += 1
         REPAIR_SPEED = repair_upgrade_level
+        current_repair_speed = REPAIR_SPEED
         upgrade_cost += 25
         print(f"Upgraded to level {repair_upgrade_level}. New speed: {REPAIR_SPEED}")
         if sound_enabled:
             shop_upgrade_sound.play()
-
     else:
         print("Not enough money or already maxed")
+
 
 
 def handle_passive_upgrade():
