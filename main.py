@@ -79,10 +79,19 @@ def handle_passive_upgrade():
     else:
         print("Not enough money or max level reached.")
 
+
 # Looping through background tracks
+last_track = None
+
+
 def play_random_track():
-    track = random.choice(background_tracks)
-    pygame.mixer.music.load(track)
+    global last_track
+    new_track = random.choice(background_tracks)
+    while new_track == last_track and len(background_tracks) > 1:
+        new_track = random.choice(background_tracks)
+    last_track = new_track
+    print(f"Now playing: {new_track}")
+    pygame.mixer.music.load(new_track)
     pygame.mixer.music.play()
 
     # === Show Stats Screen ===
