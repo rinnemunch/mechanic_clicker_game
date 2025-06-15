@@ -8,6 +8,13 @@ pygame.init()
 
 pygame.mixer.init()
 
+# Background music
+background_tracks = [
+    "assets/music/track1.mp3",
+    "assets/music/track2.mp3"
+]
+
+
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
