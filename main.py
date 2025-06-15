@@ -161,13 +161,23 @@ main_background = pygame.transform.scale(main_background, (WIDTH, HEIGHT))
 
 # Loading Car Sprites
 car_sprites = []
-for filename in os.listdir("assets/cars"):
-    if filename.endswith(".png"):
-        img = pygame.image.load(os.path.join("assets/cars", filename)).convert_alpha()
-        img = pygame.transform.scale(img, (340, 240))
-        car_sprites.append(img)
 
-current_car = random.choice(car_sprites)
+
+def load_car(filename, size, y_offset=0):
+    img = pygame.image.load(os.path.join("assets/cars", filename)).convert_alpha()
+    img = pygame.transform.scale(img, size)
+    return img, y_offset
+
+
+car_sprites.append(load_car("beetle_red.png", (340, 240), 20))
+car_sprites.append(load_car("boxtruck.png", (340, 240), 20))
+car_sprites.append(load_car("cybertruck.png", (340, 240), 0))
+car_sprites.append(load_car("green_sportscar.png", (340, 240), 0))
+car_sprites.append(load_car("mclaren_8bit.png", (340, 240), 0))
+car_sprites.append(load_car("miata.png", (340, 240), 0))
+
+current_car, car_offset = random.choice(car_sprites)
+
 
 # Colors
 WHITE = (255, 255, 255)
@@ -253,7 +263,7 @@ max_repair_level = 10
 upgrade_cost = 25
 REPAIR_SPEED = repair_upgrade_level
 current_repair_speed = REPAIR_SPEED
-current_car = random.choice(car_sprites)
+current_car, car_offset = random.choice(car_sprites)
 
 # Passive income
 passive_income_level = 0
@@ -360,7 +370,7 @@ while running:
                     money += 10
                     total_repairs += 1
                     total_money_earned += 10
-                    current_car = random.choice(car_sprites)
+                    current_car, car_offset = random.choice(car_sprites)
                     if sound_enabled:
                         repair_complete_sound.play()
 
@@ -394,12 +404,7 @@ while running:
     WINDOW.blit(main_background, (0, 0))
 
     # Draw car
-    if current_car == car_sprites[0]:
-        WINDOW.blit(current_car, (car_x, car_y + 20))
-    elif current_car == car_sprites[1]:
-        WINDOW.blit(current_car, (car_x, car_y + 20))
-    else:
-        WINDOW.blit(current_car, (car_x, car_y))
+    WINDOW.blit(current_car, (car_x, car_y + car_offset))
 
     if passive_income_level >= 1:
         WINDOW.blit(flag_img, (50, 60))
