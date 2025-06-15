@@ -16,14 +16,15 @@ background_tracks = [
     "assets/music/track2.mp3"
 ]
 
-# Confetti
+# Money animation
 confetti_frames = []
-confetti_path = "assets/confetti/frames_trimmed"
+confetti_path = "assets/money/money_trimmed"
+
 
 for filename in sorted(os.listdir(confetti_path)):
     if filename.endswith(".png"):
         img = pygame.image.load(os.path.join(confetti_path, filename)).convert_alpha()
-        img = pygame.transform.scale(img, (150, 150))  # Adjustable
+        img = pygame.transform.scale(img, (500, 200))  # Adjustable
         confetti_frames.append(img)
 
 # Confetti animation state
@@ -462,7 +463,7 @@ while running:
                 confetti_timer = current_time
                 confetti_index += 1
             if confetti_index < len(confetti_frames):
-                WINDOW.blit(confetti_frames[confetti_index], (car_x + 100, car_y - 50))  # Adjust position
+                WINDOW.blit(confetti_frames[confetti_index], (car_x - 30, car_y - 10))  # Adjustable
         else:
             show_confetti = False
 
