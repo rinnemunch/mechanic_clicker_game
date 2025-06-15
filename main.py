@@ -171,10 +171,10 @@ def load_car(filename, size, y_offset=0):
 
 car_sprites.append(load_car("beetle_red.png", (340, 240), 20))
 car_sprites.append(load_car("boxtruck.png", (340, 240), -10))
-car_sprites.append(load_car("cybertruck.png", (420, 240), 30))
-car_sprites.append(load_car("green_sportscar.png", (340, 240), 30))
+car_sprites.append(load_car("cybertruck.png", (450, 240), 30))
+car_sprites.append(load_car("green_sportscar.png", (340, 240), 28))
 car_sprites.append(load_car("mclaren_8bit.png", (340, 240), 0))
-car_sprites.append(load_car("miata.png", (340, 240), 0))
+car_sprites.append(load_car("miata.png", (340, 240), 20))
 
 
 current_car, car_offset = random.choice(car_sprites)
@@ -406,6 +406,11 @@ while running:
 
     # Draw car
     WINDOW.blit(current_car, (car_x, car_y + car_offset))
+    # Custom shifts
+    if current_car == car_sprites[2][0]:
+        WINDOW.blit(current_car, (car_x - 15, car_y + car_offset))
+    else:
+        WINDOW.blit(current_car, (car_x, car_y + car_offset))
 
     if passive_income_level >= 1:
         WINDOW.blit(flag_img, (50, 60))
