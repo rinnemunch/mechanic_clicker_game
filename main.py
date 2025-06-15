@@ -5,8 +5,10 @@ import os
 
 # Initialize pygame
 pygame.init()
-
 pygame.mixer.init()
+
+WIDTH, HEIGHT = 800, 600
+WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # Background music
 background_tracks = [
@@ -24,6 +26,10 @@ for filename in sorted(os.listdir(confetti_path)):
         img = pygame.transform.scale(img, (150, 150))  # Adjustable
         confetti_frames.append(img)
 
+# Confetti animation state
+show_confetti = False
+confetti_index = 0
+confetti_timer = 0
 
 # Sound effects
 repair_sounds = [
@@ -182,8 +188,6 @@ def show_shop_screen():
 
 
 # Window
-WIDTH, HEIGHT = 800, 600
-WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 flag_img = pygame.image.load("assets/garage_upgrades/flag.png").convert_alpha()
 flag_img = pygame.transform.scale(flag_img, (100, 100))
 board_img = pygame.image.load("assets/garage_upgrades/bulletin_board.png").convert_alpha()
@@ -409,6 +413,9 @@ while running:
                     total_repairs += 1
                     total_money_earned += 10
                     current_car, car_offset = random.choice(car_sprites)
+                    show_confetti = True
+                    confetti_index = 0
+                    confetti_timer = pygame.time.get_ticks()
                     if sound_enabled:
                         repair_complete_sound.play()
 
@@ -446,6 +453,18 @@ while running:
         WINDOW.blit(current_car, (car_x - 30, car_y + car_offset))
     else:
         WINDOW.blit(current_car, (car_x, car_y + car_offset))
+
+    # Draw confetti
+    if show_confetti:
+        current_time = pygame.time.get_ticks()
+        if confetti_index < len(confetti_frames):
+            if current_time - confetti_timer > 30:  # Adjust speed if needed
+                confetti_timer = current_time
+                confetti_index += 1
+            if confetti_index < len(confetti_frames):
+                WINDOW.blit(confetti_frames[confetti_index], (car_x + 100, car_y - 50))  # Adjust position
+        else:
+            show_confetti = False
 
     # Passive income visuals
     if passive_income_level >= 1:
