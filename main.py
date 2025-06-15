@@ -351,6 +351,8 @@ while running:
     clock.tick(60)
     mouse_pos = pygame.mouse.get_pos()
     now = pygame.time.get_ticks()
+    if not pygame.mixer.music.get_busy():
+        play_random_track()
     if now - last_passive_tick >= 1000:
         money += passive_income_amount
         total_money_earned += passive_income_amount
