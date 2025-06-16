@@ -542,7 +542,9 @@ while running:
                         random.choice(repair_sounds).play()
                 else:
                     repair_progress = 0
-                    money += 10
+                    earned = int(10 * boost_amount)
+                    money += earned
+                    total_money_earned += earned
                     total_repairs += 1
                     total_money_earned += 10
                     while True:
