@@ -38,7 +38,6 @@ confetti_timer = 0
 BUTTON_BASE = (0, 123, 255)
 BUTTON_HOVER = (51, 156, 255)
 
-
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
@@ -51,6 +50,7 @@ shop_upgrade_sound = pygame.mixer.Sound("assets/shop_upgrade.wav")
 sound_enabled = True
 music_enabled = True
 repair_channel = pygame.mixer.Channel(1)
+
 
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
@@ -142,7 +142,8 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
         stats = font.render(f"Total Repairs: {total_repairs}", True, WHITE)
         money_stat = font.render(f"Total Money Earned: ${total_money_earned}", True, WHITE)
         speed_stat = font.render(f"Repair Speed: {current_repair_speed}", True, WHITE)
-        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to go back", True, (200, 200, 200))
+        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to go back", True,
+                                                                                      (200, 200, 200))
 
         WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
         WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 200))
@@ -193,7 +194,8 @@ def show_shop_screen():
         WINDOW.blit(passive_surface, passive_button_rect)
 
         # Tip
-        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True, (200, 200, 200))
+        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True,
+                                                                                      (200, 200, 200))
         WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
 
         pygame.display.flip()
@@ -241,7 +243,6 @@ car_sprites.append(load_car("blue_mustang.png", (340, 240), 20))
 
 current_car, car_offset = random.choice(car_sprites)
 last_car = None
-
 
 # Colors
 WHITE = (255, 255, 255)
@@ -330,6 +331,18 @@ music_toggle_button = Button(
     base_color=BUTTON_BASE,
     hover_color=BUTTON_HOVER
 )
+# Skip track
+skip_track_button = Button(
+    x=WIDTH // 2 - 100,
+    y=390,
+    w=200,
+    h=50,
+    text="Skip Track",
+    font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
+    base_color=BUTTON_BASE,
+    hover_color=BUTTON_HOVER
+)
+
 
 # Repair Button
 repair_button = Button(
@@ -425,7 +438,8 @@ def show_settings_screen():
         # Background and text
         WINDOW.fill((25, 25, 25))
         title = font.render("Settings", True, WHITE)
-        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True, (200, 200, 200))
+        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True,
+                                                                                      (200, 200, 200))
         WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
         WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
 
