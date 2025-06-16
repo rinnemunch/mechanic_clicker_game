@@ -137,7 +137,7 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
         stats = font.render(f"Total Repairs: {total_repairs}", True, WHITE)
         money_stat = font.render(f"Total Money Earned: ${total_money_earned}", True, WHITE)
         speed_stat = font.render(f"Repair Speed: {current_repair_speed}", True, WHITE)
-        tip = pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to go back", True, (200, 200, 200))
+        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to go back", True, (200, 200, 200))
 
         WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
         WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 200))
@@ -188,7 +188,7 @@ def show_shop_screen():
         WINDOW.blit(passive_surface, passive_button_rect)
 
         # Tip
-        tip = pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True, (200, 200, 200))
+        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True, (200, 200, 200))
         WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
 
         pygame.display.flip()
@@ -248,7 +248,7 @@ car_width, car_height = 200, 100
 button_x, button_y = 325, 350
 button_width, button_height = 150, 50
 BUTTON_COLOR = (0, 120, 215)
-button_font = pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 30)
+button_font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30)
 button_text = button_font.render("Repair", True, WHITE)
 button_text_rect = button_text.get_rect(center=(button_x + button_width // 2, button_y + button_height // 2))
 
@@ -264,7 +264,7 @@ shop_button = Button(
     w=shop_width,
     h=shop_height,
     text="Shop",
-    font=pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
+    font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
     base_color=(0, 180, 100),
     hover_color=(0, 220, 120)
 )
@@ -281,13 +281,13 @@ settings_button = Button(
     w=settings_width,
     h=settings_height,
     text="Settings",
-    font=pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
+    font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
     base_color=(180, 180, 0),
     hover_color=(220, 220, 0)
 )
 
 # Stats button
-stats_font = pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 30)
+stats_font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30)
 stats_button = Button(
     x=20,
     y=HEIGHT - 70,
@@ -306,7 +306,7 @@ sound_toggle_button = Button(
     w=200,
     h=50,
     text="Sound: On",
-    font=pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
+    font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
     base_color=(100, 100, 255),
     hover_color=(140, 140, 255)
 )
@@ -318,7 +318,7 @@ music_toggle_button = Button(
     w=200,
     h=50,
     text="Music: On",
-    font=pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
+    font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
     base_color=(100, 100, 255),
     hover_color=(140, 140, 255)
 )
@@ -330,7 +330,7 @@ repair_button = Button(
     w=button_width,
     h=button_height,
     text="Repair",
-    font=pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
+    font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
     base_color=(0, 120, 215),
     hover_color=(0, 150, 245)
 )
@@ -354,14 +354,14 @@ last_passive_tick = pygame.time.get_ticks()
 
 # Money
 money = 0
-money_font = pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 48)
+money_font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 48)
 
 # Stats inside
 total_repairs = 0
 total_money_earned = 0
 
 # Font setup
-font = pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 36)
+font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 36)
 text_surface = font.render("Car", True, WHITE)
 text_rect = text_surface.get_rect(center=(car_x + car_width // 2, car_y + car_height // 2))
 
@@ -417,7 +417,7 @@ def show_settings_screen():
         # Background and text
         WINDOW.fill((25, 25, 25))
         title = font.render("Settings", True, WHITE)
-        tip = pygame.font.SysFont("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True, (200, 200, 200))
+        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True, (200, 200, 200))
         WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
         WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
 
