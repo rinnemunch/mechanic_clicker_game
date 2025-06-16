@@ -187,7 +187,7 @@ def show_shop_screen():
         WINDOW.blit(upgrade_surface, upgrade_button_rect)
 
         # Passive income upgrade button
-        passive_text = f"Add Garage Upgrade (Lvl {passive_income_level}/{max_passive_level}) - ${passive_upgrade_cost}"
+        passive_text = f"Increase Passive Income (Lvl {passive_income_level}/{max_passive_level}) - ${passive_upgrade_cost}"
         passive_surface = font.render(passive_text, True, WHITE)
         passive_button_rect = passive_surface.get_rect(center=(WIDTH // 2, 300))
         pygame.draw.rect(WINDOW, (255, 140, 0), passive_button_rect.inflate(20, 10), border_radius=10)
