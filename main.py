@@ -76,8 +76,6 @@ max_boost_level = 10
 boost_amount = 1.0
 boost_upgrade_cost = 150
 
-
-
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
         self.rect = pygame.Rect(x, y, w, h)
@@ -218,6 +216,13 @@ def show_shop_screen():
         passive_button_rect = passive_surface.get_rect(center=(WIDTH // 2, 300))
         pygame.draw.rect(WINDOW, (255, 140, 0), passive_button_rect.inflate(20, 10), border_radius=10)
         WINDOW.blit(passive_surface, passive_button_rect)
+
+        # Boost Earnings upgrade button
+        boost_text = f"Boost Earnings (Lvl {boost_level}/{max_boost_level}) - ${boost_upgrade_cost}"
+        boost_surface = font.render(boost_text, True, WHITE)
+        boost_button_rect = boost_surface.get_rect(center=(WIDTH // 2, 400))
+        pygame.draw.rect(WINDOW, (200, 50, 150), boost_button_rect.inflate(20, 10), border_radius=10)
+        WINDOW.blit(boost_surface, boost_button_rect)
 
         # Tip
         tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True,
