@@ -38,6 +38,13 @@ confetti_timer = 0
 BUTTON_BASE = (0, 123, 255)
 BUTTON_HOVER = (51, 156, 255)
 
+mechanic_frames = []
+mechanic_frames.append(pygame.image.load("assets/garage_upgrades/mechanic_1.png").convert_alpha())
+mechanic_frames.append(pygame.image.load("assets/garage_upgrades/mechanic_2.png").convert_alpha())
+
+mechanic_frames = [pygame.transform.scale(img, (100, 100)) for img in mechanic_frames]
+
+
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
