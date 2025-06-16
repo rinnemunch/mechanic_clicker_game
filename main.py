@@ -70,6 +70,13 @@ sound_enabled = True
 music_enabled = True
 repair_channel = pygame.mixer.Channel(1)
 
+# Boost income upgrade
+boost_level = 0
+max_boost_level = 10
+boost_amount = 1.0
+boost_upgrade_cost = 150
+
+
 
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
