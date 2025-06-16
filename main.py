@@ -45,6 +45,7 @@ repair_complete_sound = pygame.mixer.Sound("assets/repair_complete.wav")
 ui_click_sound = pygame.mixer.Sound("assets/ui_click.wav")
 shop_upgrade_sound = pygame.mixer.Sound("assets/shop_upgrade.wav")
 sound_enabled = True
+music_enabled = True
 repair_channel = pygame.mixer.Channel(1)
 
 
