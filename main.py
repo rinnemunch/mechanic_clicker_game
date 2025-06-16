@@ -237,6 +237,7 @@ car_sprites.append(load_car("miata.png", (340, 240), 20))
 car_sprites.append(load_car("corvette_c5.png", (340, 240), 20))
 car_sprites.append(load_car("purple_countach.png", (360, 240), 12))
 car_sprites.append(load_car("black_firebird.png", (340, 240), 15))
+car_sprites.append(load_car("blue_mustang.png", (340, 240), 20))
 
 current_car, car_offset = random.choice(car_sprites)
 
