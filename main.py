@@ -451,6 +451,7 @@ def show_settings_screen():
         # Draw sound toggle
         sound_toggle_button.draw(WINDOW, pygame.mouse.get_pos())
         music_toggle_button.draw(WINDOW, pygame.mouse.get_pos())
+        skip_track_button.draw(WINDOW, pygame.mouse.get_pos())
 
         pygame.display.flip()
 
