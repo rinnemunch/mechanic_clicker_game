@@ -38,15 +38,20 @@ confetti_timer = 0
 BUTTON_BASE = (0, 123, 255)
 BUTTON_HOVER = (51, 156, 255)
 
-mechanic_frames = []
-mechanic_frames.append(pygame.image.load("assets/garage_upgrades/mechanic_1.png").convert_alpha())
-mechanic_frames.append(pygame.image.load("assets/garage_upgrades/mechanic_2.png").convert_alpha())
+mechanic_frames = [pygame.image.load("assets/garage_upgrades/mechanic_1.png").convert_alpha(),
+                   pygame.image.load("assets/garage_upgrades/mechanic_2.png").convert_alpha()]
 
 mechanic_frames = [pygame.transform.scale(img, (130, 130)) for img in mechanic_frames]
 
 mechanic_frame_index = 0
 mechanic_timer = 0
 mechanic_interval = 2000
+
+mechanic2_frames = [pygame.image.load("assets/garage_upgrades/mechanic2_1.png").convert_alpha(),
+                    pygame.image.load("assets/garage_upgrades/mechanic2_2.png").convert_alpha()]
+
+mechanic2_frames = [pygame.transform.scale(img, (130, 130)) for img in mechanic2_frames]
+
 
 
 # Sound effects
