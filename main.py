@@ -240,6 +240,8 @@ car_sprites.append(load_car("black_firebird.png", (340, 240), 15))
 car_sprites.append(load_car("blue_mustang.png", (340, 240), 20))
 
 current_car, car_offset = random.choice(car_sprites)
+last_car = None
+
 
 # Colors
 WHITE = (255, 255, 255)
