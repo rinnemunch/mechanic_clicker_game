@@ -179,8 +179,8 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
 
 
 def show_shop_screen():
-    global upgrade_button_rect
-
+    global upgrade_button_rect, passive_button_rect, boost_button_rect
+    global boost_level, max_boost_level, boost_amount, boost_upgrade_cost, money, sound_enabled
     shop_running = True
     while shop_running:
         for event in pygame.event.get():
@@ -195,6 +195,17 @@ def show_shop_screen():
                     handle_upgrade()
                 if passive_button_rect.collidepoint(mouse):
                     handle_passive_upgrade()
+                if boost_button_rect.collidepoint(mouse):
+                    if boost_level < max_boost_level and money >= boost_upgrade_cost:
+                        money -= boost_upgrade_cost
+                        boost_level += 1
+                        boost_amount += 0.25
+                        boost_upgrade_cost += 100
+                        if sound_enabled:
+                            shop_upgrade_sound.play()
+                        print(f"Boost Level: {boost_level}, Multiplier: {boost_amount}")
+                    else:
+                        print("Not enough money or max level reached.")
 
         # Background
         WINDOW.fill((20, 20, 20))
