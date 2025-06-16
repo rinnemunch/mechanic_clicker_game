@@ -391,6 +391,16 @@ skip_track_button = Button(
     hover_color=BUTTON_HOVER
 )
 
+quit_button = Button(
+    x=WIDTH // 2 - 100,
+    y=460,
+    w=200,
+    h=50,
+    text="Quit Game",
+    font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
+    base_color=(180, 50, 50),
+    hover_color=(255, 80, 80)
+)
 
 # Repair Button
 repair_button = Button(
