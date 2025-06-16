@@ -34,6 +34,11 @@ show_confetti = False
 confetti_index = 0
 confetti_timer = 0
 
+# Button Colors
+BUTTON_BASE = (0, 123, 255)
+BUTTON_HOVER = (51, 156, 255)
+
+
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
@@ -265,8 +270,8 @@ shop_button = Button(
     h=shop_height,
     text="Shop",
     font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
-    base_color=(0, 180, 100),
-    hover_color=(0, 220, 120)
+    base_color=BUTTON_BASE,
+    hover_color=BUTTON_HOVER
 )
 
 # Settings button
@@ -282,8 +287,8 @@ settings_button = Button(
     h=settings_height,
     text="Settings",
     font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
-    base_color=(180, 180, 0),
-    hover_color=(220, 220, 0)
+    base_color=BUTTON_BASE,
+    hover_color=BUTTON_HOVER
 )
 
 # Stats button
@@ -295,8 +300,8 @@ stats_button = Button(
     h=50,
     text="Stats",
     font=stats_font,
-    base_color=(128, 0, 128),
-    hover_color=(170, 0, 170)
+    base_color=BUTTON_BASE,
+    hover_color=BUTTON_HOVER
 )
 
 # Sounds Toggle Button
@@ -307,8 +312,8 @@ sound_toggle_button = Button(
     h=50,
     text="Sound: On",
     font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
-    base_color=(100, 100, 255),
-    hover_color=(140, 140, 255)
+    base_color=BUTTON_BASE,
+    hover_color=BUTTON_HOVER
 )
 
 # Music Toggle Button
@@ -319,8 +324,8 @@ music_toggle_button = Button(
     h=50,
     text="Music: On",
     font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
-    base_color=(100, 100, 255),
-    hover_color=(140, 140, 255)
+    base_color=BUTTON_BASE,
+    hover_color=BUTTON_HOVER
 )
 
 # Repair Button
@@ -331,8 +336,8 @@ repair_button = Button(
     h=button_height,
     text="Repair",
     font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
-    base_color=(0, 120, 215),
-    hover_color=(0, 150, 245)
+    base_color=BUTTON_BASE,
+    hover_color=BUTTON_HOVER
 )
 
 # Repair logic
