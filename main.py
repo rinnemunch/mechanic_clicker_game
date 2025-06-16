@@ -44,6 +44,10 @@ mechanic_frames.append(pygame.image.load("assets/garage_upgrades/mechanic_2.png"
 
 mechanic_frames = [pygame.transform.scale(img, (100, 100)) for img in mechanic_frames]
 
+mechanic_frame_index = 0
+mechanic_timer = 0
+mechanic_interval = 500
+
 
 # Sound effects
 repair_sounds = [
@@ -583,6 +587,12 @@ while running:
         WINDOW.blit(tires_img, (180, 480))
     if passive_income_level >= 7:
         WINDOW.blit(trophy_img, (660, 275))
+    if passive_income_level >= 8:
+        now = pygame.time.get_ticks()
+        if now - mechanic_timer > mechanic_interval:
+            mechanic_frame_index = (mechanic_frame_index + 1) % len(mechanic_frames)
+            mechanic_timer = now
+        WINDOW.blit(mechanic_frames[mechanic_frame_index], (440, 480))
 
     # Draw repair button
     repair_button.draw(WINDOW, mouse_pos)
