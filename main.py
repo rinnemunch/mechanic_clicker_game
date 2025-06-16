@@ -166,6 +166,7 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
         stats = font.render(f"Total Repairs: {total_repairs}", True, WHITE)
         money_stat = font.render(f"Total Money Earned: ${total_money_earned}", True, WHITE)
         speed_stat = font.render(f"Repair Speed: {current_repair_speed}", True, WHITE)
+        boost_stat = font.render(f"Earnings Multiplier: x{boost_amount:.2f}", True, WHITE)
         tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to go back", True,
                                                                                       (200, 200, 200))
 
@@ -173,6 +174,7 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
         WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 200))
         WINDOW.blit(money_stat, (WIDTH // 2 - money_stat.get_width() // 2, 260))
         WINDOW.blit(speed_stat, (WIDTH // 2 - speed_stat.get_width() // 2, 320))
+        WINDOW.blit(boost_stat, (WIDTH // 2 - boost_stat.get_width() // 2, 380))
         WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
 
         pygame.display.flip()
