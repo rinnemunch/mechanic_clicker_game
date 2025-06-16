@@ -446,7 +446,7 @@ def show_settings_screen():
         tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True,
                                                                                       (200, 200, 200))
         WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
-        WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 400))
+        WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 460))
 
         # Draw sound toggle
         sound_toggle_button.draw(WINDOW, pygame.mouse.get_pos())
