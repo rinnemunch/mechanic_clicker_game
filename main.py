@@ -524,7 +524,13 @@ while running:
     if passive_income_level >= 2:
         WINDOW.blit(board_img, (180, 60))
     if passive_income_level >= 3:
-        WINDOW.blit(clock_img, (310, 60))  # adjust X if needed
+        WINDOW.blit(clock_img, (310, 60))
+    if passive_income_level >= 4:
+        WINDOW.blit(poster_img, (440, 60))
+    if passive_income_level >= 5:
+        WINDOW.blit(neon_img, (570, 60))
+    if passive_income_level >= 6:
+        WINDOW.blit(tires_img, (700, 60))
 
     # Draw repair button
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
