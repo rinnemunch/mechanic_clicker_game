@@ -201,7 +201,7 @@ def show_shop_screen():
         pygame.display.flip()
 
 
-# Window
+# Garage Visual Upgrades
 flag_img = pygame.image.load("assets/garage_upgrades/flag.png").convert_alpha()
 flag_img = pygame.transform.scale(flag_img, (100, 100))
 board_img = pygame.image.load("assets/garage_upgrades/bulletin_board.png").convert_alpha()
@@ -214,6 +214,8 @@ neon_img = pygame.image.load("assets/garage_upgrades/neon_sign.png").convert_alp
 neon_img = pygame.transform.scale(neon_img, (100, 100))
 tires_img = pygame.image.load("assets/garage_upgrades/tires.png").convert_alpha()
 tires_img = pygame.transform.scale(tires_img, (100, 100))
+trophy_img = pygame.image.load("assets/garage_upgrades/trophy.png").convert_alpha()
+trophy_img = pygame.transform.scale(trophy_img, (100, 100))
 pygame.display.set_caption("Mechanic Clicker")
 play_random_track()
 
