@@ -204,6 +204,12 @@ board_img = pygame.image.load("assets/garage_upgrades/bulletin_board.png").conve
 board_img = pygame.transform.scale(board_img, (100, 100))
 clock_img = pygame.image.load("assets/garage_upgrades/clock.png").convert_alpha()
 clock_img = pygame.transform.scale(clock_img, (100, 100))
+poster_img = pygame.image.load("assets/garage_upgrades/poster.png").convert_alpha()
+poster_img = pygame.transform.scale(poster_img, (100, 100))
+neon_img = pygame.image.load("assets/garage_upgrades/neon_sign.png").convert_alpha()
+neon_img = pygame.transform.scale(neon_img, (100, 100))
+tires_img = pygame.image.load("assets/garage_upgrades/tires.png").convert_alpha()
+tires_img = pygame.transform.scale(tires_img, (100, 100))
 pygame.display.set_caption("Mechanic Clicker")
 play_random_track()
 
