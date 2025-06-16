@@ -13,7 +13,10 @@ WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 # Background music
 background_tracks = [
     "assets/music/track1.mp3",
-    "assets/music/track2.mp3"
+    "assets/music/track2.mp3",
+    "assets/music/track3.mp3",
+    "assets/music/track4.mp3",
+    "assets/music/track5.mp3"
 ]
 
 # Money animation (Be aware that I switched from confetti to money pngs)
