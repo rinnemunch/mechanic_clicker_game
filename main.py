@@ -305,6 +305,18 @@ sound_toggle_button = Button(
     hover_color=(140, 140, 255)
 )
 
+# Music Toggle Button
+music_toggle_button = Button(
+    x=WIDTH // 2 - 100,
+    y=320,
+    w=200,
+    h=50,
+    text="Music: On",
+    font=pygame.font.SysFont(None, 30),
+    base_color=(100, 100, 255),
+    hover_color=(140, 140, 255)
+)
+
 # Repair logic
 repairing = False
 repair_progress = 0
