@@ -42,11 +42,11 @@ mechanic_frames = []
 mechanic_frames.append(pygame.image.load("assets/garage_upgrades/mechanic_1.png").convert_alpha())
 mechanic_frames.append(pygame.image.load("assets/garage_upgrades/mechanic_2.png").convert_alpha())
 
-mechanic_frames = [pygame.transform.scale(img, (100, 100)) for img in mechanic_frames]
+mechanic_frames = [pygame.transform.scale(img, (130, 130)) for img in mechanic_frames]
 
 mechanic_frame_index = 0
 mechanic_timer = 0
-mechanic_interval = 500
+mechanic_interval = 2000
 
 
 # Sound effects
