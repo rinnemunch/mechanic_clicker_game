@@ -506,7 +506,7 @@ while running:
             if (event.key == pygame.K_m and
                     mods & pygame.KMOD_CTRL and
                     mods & pygame.KMOD_SHIFT):
-                money += 100
+                money += 10000
 
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             mouse_x, mouse_y = pygame.mouse.get_pos()
@@ -609,6 +609,8 @@ while running:
             mechanic2_frame_index = (mechanic2_frame_index + 1) % len(mechanic2_frames)
             mechanic2_timer = now
         WINDOW.blit(mechanic2_frames[mechanic2_frame_index], (520, 490))
+    if passive_income_level >= 10:
+        WINDOW.blit(frame_img, (660, 150))
 
     # Draw repair button
     repair_button.draw(WINDOW, mouse_pos)
