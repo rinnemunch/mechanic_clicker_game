@@ -26,7 +26,7 @@ confetti_path = "assets/money/money_trimmed"
 for filename in sorted(os.listdir(confetti_path)):
     if filename.endswith(".png"):
         img = pygame.image.load(os.path.join(confetti_path, filename)).convert_alpha()
-        img = pygame.transform.scale(img, (500, 200))  # Adjustable
+        img = pygame.transform.scale(img, (500, 200))
         confetti_frames.append(img)
 
 # Confetti animation state
@@ -50,7 +50,7 @@ mechanic_interval = 2000
 mechanic2_frames = [pygame.image.load("assets/garage_upgrades/mechanic2_1.png").convert_alpha(),
                     pygame.image.load("assets/garage_upgrades/mechanic2_2.png").convert_alpha()]
 
-mechanic2_frames = [pygame.transform.scale(img, (130, 130)) for img in mechanic2_frames]
+mechanic2_frames = [pygame.transform.scale(img, (150, 150)) for img in mechanic2_frames]
 
 mechanic2_frame_index = 0
 mechanic2_timer = 0
@@ -606,7 +606,7 @@ while running:
         if now - mechanic2_timer > mechanic2_interval:
             mechanic2_frame_index = (mechanic2_frame_index + 1) % len(mechanic2_frames)
             mechanic2_timer = now
-        WINDOW.blit(mechanic2_frames[mechanic2_frame_index], (570, 480))
+        WINDOW.blit(mechanic2_frames[mechanic2_frame_index], (520, 490))
 
     # Draw repair button
     repair_button.draw(WINDOW, mouse_pos)
