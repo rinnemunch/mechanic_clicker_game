@@ -435,6 +435,11 @@ def show_settings_screen():
                         center=music_toggle_button.rect.center
                     )
 
+                if skip_track_button.is_clicked(pygame.mouse.get_pos()):
+                    if sound_enabled:
+                        ui_click_sound.play()
+                    play_random_track()
+
         # Background and text
         WINDOW.fill((25, 25, 25))
         title = font.render("Settings", True, WHITE)
