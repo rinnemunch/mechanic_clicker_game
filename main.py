@@ -377,7 +377,6 @@ def show_settings_screen():
                         center=sound_toggle_button.rect.center
                     )
 
-                # ⬇️ This should NOT be indented under sound toggle
                 if music_toggle_button.is_clicked(pygame.mouse.get_pos()):
                     music_enabled = not music_enabled
                     if music_enabled:
