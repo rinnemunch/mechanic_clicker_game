@@ -47,7 +47,6 @@ sound_enabled = True
 music_enabled = True
 repair_channel = pygame.mixer.Channel(1)
 
-
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
         self.rect = pygame.Rect(x, y, w, h)
@@ -324,6 +323,18 @@ music_toggle_button = Button(
     hover_color=(140, 140, 255)
 )
 
+# Repair Button
+repair_button = Button(
+    x=button_x,
+    y=button_y,
+    w=button_width,
+    h=button_height,
+    text="Repair",
+    font=pygame.font.SysFont("roboto", 30),  # change to Roboto later
+    base_color=(0, 120, 215),
+    hover_color=(0, 150, 245)
+)
+
 # Repair logic
 repairing = False
 repair_progress = 0
@@ -531,7 +542,7 @@ while running:
         WINDOW.blit(tires_img, (180, 480))
 
     # Draw repair button
-    pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
+    repair_button.draw(WINDOW, mouse_pos)
     WINDOW.blit(button_text, button_text_rect)
 
     # Draw shop button
