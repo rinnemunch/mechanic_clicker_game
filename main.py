@@ -377,6 +377,26 @@ def show_settings_screen():
                         center=sound_toggle_button.rect.center
                     )
 
+                    if music_toggle_button.is_clicked(pygame.mouse.get_pos()):
+                        music_enabled = not music_enabled
+                        if music_enabled:
+                            music_toggle_button.text = "Music: On"
+                            if sound_enabled:
+                                ui_click_sound.play()
+                            if not pygame.mixer.music.get_busy():
+                                play_random_track()
+                        else:
+                            music_toggle_button.text = "Music: Off"
+                            pygame.mixer.music.stop()
+
+                        # Re-render updated text
+                        music_toggle_button.text_surf = music_toggle_button.font.render(
+                            music_toggle_button.text, True, (255, 255, 255)
+                        )
+                        music_toggle_button.text_rect = music_toggle_button.text_surf.get_rect(
+                            center=music_toggle_button.rect.center
+                        )
+
         # Background and text
         WINDOW.fill((25, 25, 25))
         title = font.render("Settings", True, WHITE)
@@ -386,6 +406,7 @@ def show_settings_screen():
 
         # Draw sound toggle
         sound_toggle_button.draw(WINDOW, pygame.mouse.get_pos())
+        music_toggle_button.draw(WINDOW, pygame.mouse.get_pos())
 
         pygame.display.flip()
 
