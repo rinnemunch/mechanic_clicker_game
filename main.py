@@ -350,6 +350,7 @@ text_rect = text_surface.get_rect(center=(car_x + car_width // 2, car_y + car_he
 
 def show_settings_screen():
     global sound_enabled
+    global music_enabled
 
     settings_running = True
     while settings_running:
@@ -369,7 +370,6 @@ def show_settings_screen():
                     else:
                         sound_toggle_button.text = "Sound: Off"
 
-                    # Re-render updated text
                     sound_toggle_button.text_surf = sound_toggle_button.font.render(
                         sound_toggle_button.text, True, (255, 255, 255)
                     )
@@ -377,25 +377,25 @@ def show_settings_screen():
                         center=sound_toggle_button.rect.center
                     )
 
-                    if music_toggle_button.is_clicked(pygame.mouse.get_pos()):
-                        music_enabled = not music_enabled
-                        if music_enabled:
-                            music_toggle_button.text = "Music: On"
-                            if sound_enabled:
-                                ui_click_sound.play()
-                            if not pygame.mixer.music.get_busy():
-                                play_random_track()
-                        else:
-                            music_toggle_button.text = "Music: Off"
-                            pygame.mixer.music.stop()
+                # ⬇️ This should NOT be indented under sound toggle
+                if music_toggle_button.is_clicked(pygame.mouse.get_pos()):
+                    music_enabled = not music_enabled
+                    if music_enabled:
+                        music_toggle_button.text = "Music: On"
+                        if sound_enabled:
+                            ui_click_sound.play()
+                        if not pygame.mixer.music.get_busy():
+                            play_random_track()
+                    else:
+                        music_toggle_button.text = "Music: Off"
+                        pygame.mixer.music.stop()
 
-                        # Re-render updated text
-                        music_toggle_button.text_surf = music_toggle_button.font.render(
-                            music_toggle_button.text, True, (255, 255, 255)
-                        )
-                        music_toggle_button.text_rect = music_toggle_button.text_surf.get_rect(
-                            center=music_toggle_button.rect.center
-                        )
+                    music_toggle_button.text_surf = music_toggle_button.font.render(
+                        music_toggle_button.text, True, (255, 255, 255)
+                    )
+                    music_toggle_button.text_rect = music_toggle_button.text_surf.get_rect(
+                        center=music_toggle_button.rect.center
+                    )
 
         # Background and text
         WINDOW.fill((25, 25, 25))
