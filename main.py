@@ -23,7 +23,6 @@ background_tracks = [
 confetti_frames = []
 confetti_path = "assets/money/money_trimmed"
 
-
 for filename in sorted(os.listdir(confetti_path)):
     if filename.endswith(".png"):
         img = pygame.image.load(os.path.join(confetti_path, filename)).convert_alpha()
@@ -87,7 +86,6 @@ def handle_upgrade():
             shop_upgrade_sound.play()
     else:
         print("Not enough money or already maxed")
-
 
 
 def handle_passive_upgrade():
@@ -510,7 +508,7 @@ while running:
     if show_confetti:
         current_time = pygame.time.get_ticks()
         if confetti_index < len(confetti_frames):
-            if current_time - confetti_timer > 30:  # Adjust speed if needed
+            if current_time - confetti_timer > 30:
                 confetti_timer = current_time
                 confetti_index += 1
             if confetti_index < len(confetti_frames):
@@ -530,7 +528,7 @@ while running:
     if passive_income_level >= 5:
         WINDOW.blit(neon_img, (570, 60))
     if passive_income_level >= 6:
-        WINDOW.blit(tires_img, (700, 60))
+        WINDOW.blit(tires_img, (180, 480))
 
     # Draw repair button
     pygame.draw.rect(WINDOW, BUTTON_COLOR, (button_x, button_y, button_width, button_height))
