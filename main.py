@@ -575,7 +575,7 @@ while running:
     if passive_income_level >= 6:
         WINDOW.blit(tires_img, (180, 480))
     if passive_income_level >= 7:
-        WINDOW.blit(trophy_img, (310, 480))
+        WINDOW.blit(trophy_img, (660, 275))
 
     # Draw repair button
     repair_button.draw(WINDOW, mouse_pos)
