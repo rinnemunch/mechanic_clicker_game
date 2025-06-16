@@ -479,7 +479,12 @@ while running:
                     money += 10
                     total_repairs += 1
                     total_money_earned += 10
-                    current_car, car_offset = random.choice(car_sprites)
+                    while True:
+                        new_car, new_offset = random.choice(car_sprites)
+                        if new_car != current_car:
+                            break
+                    current_car, car_offset = new_car, new_offset
+                    last_car = current_car
                     show_confetti = True
                     confetti_index = 0
                     confetti_timer = pygame.time.get_ticks()
