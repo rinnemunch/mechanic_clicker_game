@@ -110,6 +110,9 @@ last_track = None
 
 def play_random_track():
     global last_track
+    if not music_enabled:
+        return
+
     new_track = random.choice(background_tracks)
     while new_track == last_track and len(background_tracks) > 1:
         new_track = random.choice(background_tracks)
