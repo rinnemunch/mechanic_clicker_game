@@ -196,6 +196,7 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
         money_stat = font.render(f"Total Money Earned: ${total_money_earned}", True, WHITE)
         speed_stat = font.render(f"Repair Speed: {current_repair_speed}", True, WHITE)
         boost_stat = font.render(f"Earnings Multiplier: x{boost_amount:.2f}", True, WHITE)
+        passive_stat = font.render(f"Passive Rate: ${passive_income_amount}/sec", True, WHITE)
         tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to go back", True,
                                                                                       (200, 200, 200))
 
@@ -204,6 +205,7 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
         WINDOW.blit(money_stat, (WIDTH // 2 - money_stat.get_width() // 2, 260))
         WINDOW.blit(speed_stat, (WIDTH // 2 - speed_stat.get_width() // 2, 320))
         WINDOW.blit(boost_stat, (WIDTH // 2 - boost_stat.get_width() // 2, 380))
+        WINDOW.blit(passive_stat, (WIDTH // 2 - passive_stat.get_width() // 2, 410))
         WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 440))
 
         pygame.display.flip()
@@ -582,10 +584,6 @@ def show_settings_screen():
         # Background and text
         WINDOW.fill((25, 25, 25))
         title = font.render("Settings", True, WHITE)
-        passive_rate_text = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 26).render(
-            f"Passive Rate: ${passive_income_amount}/sec", True, (200, 200, 200)
-        )
-        WINDOW.blit(passive_rate_text, (WIDTH // 2 - passive_rate_text.get_width() // 2, 160))
         tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True,
                                                                                       (200, 200, 200))
         WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
