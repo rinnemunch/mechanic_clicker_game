@@ -9,8 +9,6 @@ pygame.init()
 WIDTH, HEIGHT = 800, 600
 
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Mechanic Clicker")
-
 
 icon_img = pygame.image.load("assets/ui/icon.ico").convert_alpha()
 pygame.display.set_icon(icon_img)
@@ -30,6 +28,20 @@ background_tracks = [
     "assets/music/track4.mp3",
     "assets/music/track5.mp3"
 ]
+
+# Random quotes
+startup_quotes = [
+    "Now with extra grease!",
+    "Bolts not included.",
+    "Mechanic tested, player approved.",
+    "Still better than real car repairs.",
+    "Click responsibly.",
+    "Caution: Ratchets may bite.",
+    "Certified pixel mechanic!",
+    "Built with love and duct tape."
+]
+
+pygame.display.set_caption(f"Mechanic Clicker — {random.choice(startup_quotes)}")
 
 # Money animation (Be aware that I switched from confetti to money pngs)
 confetti_frames = []
