@@ -604,6 +604,10 @@ while running:
     if not pygame.mixer.music.get_busy():
         play_random_track()
     if now - last_passive_tick >= 1000:
+        if passive_income_amount > 0:
+            floating_texts.append(
+                FloatingText(f"+${passive_income_amount}", WIDTH // 2 - 30, 60)
+            )
         money += passive_income_amount
         total_money_earned += passive_income_amount
         last_passive_tick = now
