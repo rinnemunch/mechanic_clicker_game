@@ -545,6 +545,11 @@ def show_settings_screen():
                     pygame.quit()
                     sys.exit()
 
+                if how_to_button.is_clicked(pygame.mouse.get_pos()):
+                    if sound_enabled:
+                        ui_click_sound.play()
+                    show_how_to_play_screen()
+
         # Background and text
         WINDOW.fill((25, 25, 25))
         title = font.render("Settings", True, WHITE)
