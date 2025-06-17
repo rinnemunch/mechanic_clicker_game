@@ -738,8 +738,25 @@ while running:
     if passive_income_level >= 10:
         WINDOW.blit(frame_img, (660, 150))
 
-    # Draw repair button
-    repair_button.draw(WINDOW, mouse_pos)
+    # Draw repair button/Handle pulse animation
+    if repair_button_scale > 1.0:
+        elapsed = pygame.time.get_ticks() - repair_click_time
+        if elapsed > 100:
+            repair_button_scale = 1.0
+
+    scaled_width = int(repair_button.rect.width * repair_button_scale)
+    scaled_height = int(repair_button.rect.height * repair_button_scale)
+    scaled_x = repair_button.rect.centerx - scaled_width // 2
+    scaled_y = repair_button.rect.centery - scaled_height // 2
+
+    # Draw the scaled repair button manually
+    pygame.draw.rect(WINDOW, repair_button.current_color, (scaled_x, scaled_y, scaled_width, scaled_height),
+                     border_radius=25)
+
+    # Re-render text centered on scaled button
+    text_surf = repair_button.font.render(repair_button.text, True, (255, 255, 255))
+    text_rect = text_surf.get_rect(center=(repair_button.rect.centerx, repair_button.rect.centery))
+    WINDOW.blit(text_surf, text_rect)
 
     # Draw shop button
     shop_button.draw(WINDOW, mouse_pos)
