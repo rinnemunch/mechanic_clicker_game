@@ -10,6 +10,11 @@ pygame.mixer.init()
 # Hides the default cursor
 pygame.mouse.set_visible(False)
 
+# ICO Icon
+icon_img = pygame.image.load("assets/ui/icon.ico").convert_alpha()
+pygame.display.set_icon(icon_img)
+
+
 
 WIDTH, HEIGHT = 800, 600
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
