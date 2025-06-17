@@ -56,7 +56,6 @@ mechanic2_frame_index = 0
 mechanic2_timer = 0
 mechanic2_interval = 1200
 
-
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
@@ -75,6 +74,7 @@ boost_level = 0
 max_boost_level = 10
 boost_amount = 1.0
 boost_upgrade_cost = 150
+
 
 class Button:
     def __init__(self, x, y, w, h, text, font, base_color, hover_color):
@@ -208,6 +208,35 @@ def show_shop_screen():
                         print(f"Boost Level: {boost_level}, Multiplier: {boost_amount}")
                     else:
                         print("Not enough money or max level reached.")
+
+
+def show_how_to_play_screen():
+    how_to_running = True
+    lines = [
+        "HOW TO PLAY:",
+        "- Click the Repair button to fix cars.",
+        "- Each car repaired earns you money.",
+        "- Use money to buy upgrades in the Shop.",
+        "- Boost passive income, earnings and repair speed.",
+        "- Customize your garage with each upgrade.",
+        "",
+        "Press ESC to return to Settings."
+    ]
+    while how_to_running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                how_to_running = False
+
+        WINDOW.fill((20, 20, 20))
+
+        for i, line in enumerate(lines):
+            text = font.render(line, True, WHITE)
+            WINDOW.blit(text, (WIDTH // 2 - text.get_width() // 2, 100 + i * 40))
+
+        pygame.display.flip()
 
         # Background
         WINDOW.fill((20, 20, 20))
