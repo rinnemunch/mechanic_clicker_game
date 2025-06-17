@@ -247,6 +247,8 @@ def show_shop_screen():
     global upgrade_button_rect, passive_button_rect, boost_button_rect
     global boost_level, max_boost_level, boost_amount, boost_upgrade_cost, money, sound_enabled
     shop_running = True
+    error_message = ""
+    error_timer = 0
     while shop_running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -263,6 +265,8 @@ def show_shop_screen():
                     else:
                         if sound_enabled:
                             error_sound.play()
+                        error_message = "Not enough money!" if money < upgrade_cost else "Max level reached!"
+                        error_timer = pygame.time.get_ticks()
 
                 if passive_button_rect.collidepoint(mouse):
                     if passive_income_level < max_passive_level and money >= passive_upgrade_cost:
@@ -270,6 +274,8 @@ def show_shop_screen():
                     else:
                         if sound_enabled:
                             error_sound.play()
+                        error_message = "Not enough money!" if money < passive_upgrade_cost else "Max level reached!"
+                        error_timer = pygame.time.get_ticks()
 
                 if boost_button_rect.collidepoint(mouse):
                     if boost_level < max_boost_level and money >= boost_upgrade_cost:
@@ -283,8 +289,10 @@ def show_shop_screen():
                     else:
                         if sound_enabled:
                             error_sound.play()
+                        error_message = "Not enough money!" if money < boost_upgrade_cost else "Max level reached!"
+                        error_timer = pygame.time.get_ticks()
 
-             # Background
+            # Background
             WINDOW.fill((20, 20, 20))
 
             # Title
@@ -328,6 +336,11 @@ def show_shop_screen():
 
             mouse_x, mouse_y = pygame.mouse.get_pos()
             WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
+
+            if error_message and pygame.time.get_ticks() - error_timer < 2000:
+                err_font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24)
+                err_surface = err_font.render(error_message, True, (255, 60, 60))
+                WINDOW.blit(err_surface, (WIDTH // 2 - err_surface.get_width() // 2, HEIGHT - 60))
 
             pygame.display.flip()
 
@@ -864,6 +877,8 @@ while running:
     # Draw custom wrench cursor
     mouse_x, mouse_y = pygame.mouse.get_pos()
     WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
+
+
 
     # Update display
     pygame.display.flip()
