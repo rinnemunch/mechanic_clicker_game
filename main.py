@@ -268,7 +268,8 @@ def show_how_to_play_screen():
         WINDOW.fill((20, 20, 20))
 
         for i, line in enumerate(lines):
-            text = font.render(line, True, WHITE)
+            small_font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 26)
+            text = small_font.render(line, True, WHITE)
             WINDOW.blit(text, (WIDTH // 2 - text.get_width() // 2, 100 + i * 40))
 
         pygame.display.flip()
