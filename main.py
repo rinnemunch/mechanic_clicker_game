@@ -302,6 +302,9 @@ def show_how_to_play_screen():
         "",
         "Press ESC to return to Settings."
     ]
+
+    small_font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 26)
+
     while how_to_running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -313,7 +316,6 @@ def show_how_to_play_screen():
         WINDOW.fill((20, 20, 20))
 
         for i, line in enumerate(lines):
-            small_font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 26)
             text = small_font.render(line, True, WHITE)
             WINDOW.blit(text, (WIDTH // 2 - text.get_width() // 2, 100 + i * 40))
 
@@ -321,6 +323,7 @@ def show_how_to_play_screen():
         WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
 
         pygame.display.flip()
+
 
 
 # Garage Visual Upgrades
