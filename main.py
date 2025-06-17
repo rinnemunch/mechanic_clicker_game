@@ -59,6 +59,10 @@ mechanic2_frame_index = 0
 mechanic2_timer = 0
 mechanic2_interval = 1200
 
+# Repair button click scaling
+repair_button_scale = 1.0
+repair_click_time = 0
+
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
