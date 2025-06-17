@@ -69,7 +69,7 @@ repair_click_time = 0
 
 # Wrench Cursor
 wrench_cursor = pygame.image.load("assets/ui/wrench_cursor.png").convert_alpha()
-wrench_cursor = pygame.transform.scale(wrench_cursor, (32, 32))
+wrench_cursor = pygame.transform.scale(wrench_cursor, (48, 48))
 
 # Sound effects
 repair_sounds = [
@@ -216,6 +216,9 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
         WINDOW.blit(passive_stat, (WIDTH // 2 - passive_stat.get_width() // 2, 420))
         WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 480))
 
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
+
         pygame.display.flip()
 
 
@@ -281,6 +284,9 @@ def show_shop_screen():
                                                                                           (200, 200, 200))
             WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 440))
 
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
+
             pygame.display.flip()
 
 
@@ -310,6 +316,9 @@ def show_how_to_play_screen():
             small_font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 26)
             text = small_font.render(line, True, WHITE)
             WINDOW.blit(text, (WIDTH // 2 - text.get_width() // 2, 100 + i * 40))
+
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
 
         pygame.display.flip()
 
@@ -603,6 +612,9 @@ def show_settings_screen():
         skip_track_button.draw(WINDOW, pygame.mouse.get_pos())
         quit_button.draw(WINDOW, pygame.mouse.get_pos())
         how_to_button.draw(WINDOW, pygame.mouse.get_pos())
+
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
 
         pygame.display.flip()
 
