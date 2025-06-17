@@ -3,20 +3,23 @@ import sys
 import random
 import os
 
-# Initialize pygame
+# Init
 pygame.init()
-pygame.mixer.init()
 
-# Hides the default cursor
-pygame.mouse.set_visible(False)
+WIDTH, HEIGHT = 800, 600
 
-# ICO Icon
+WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Mechanic Clicker")
+
+
 icon_img = pygame.image.load("assets/ui/icon.ico").convert_alpha()
 pygame.display.set_icon(icon_img)
 
 
+# Hides the default cursor
+pygame.mouse.set_visible(False)
 
-WIDTH, HEIGHT = 800, 600
+
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # Background music
@@ -120,6 +123,7 @@ class Button:
     def is_clicked(self, mouse_pos):
         return self.rect.collidepoint(mouse_pos)
 
+
 class FloatingText:
     def __init__(self, text, x, y, duration=1000):
         self.text = text
@@ -140,7 +144,6 @@ class FloatingText:
         text_surf = self.font.render(self.text, True, (0, 255, 0))
         text_surf.set_alpha(int(self.alpha))
         surface.blit(text_surf, (self.x, self.y))
-
 
 
 def handle_upgrade():
@@ -328,7 +331,6 @@ def show_how_to_play_screen():
         WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
 
         pygame.display.flip()
-
 
 
 # Garage Visual Upgrades
