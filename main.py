@@ -103,6 +103,7 @@ shop_upgrade_sound = pygame.mixer.Sound("assets/shop_upgrade.wav")
 sound_enabled = True
 music_enabled = True
 repair_channel = pygame.mixer.Channel(1)
+error_sound = pygame.mixer.Sound("assets/sfx/error.wav")
 
 # Boost income upgrade
 boost_level = 0
