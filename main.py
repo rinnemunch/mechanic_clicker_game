@@ -430,6 +430,18 @@ quit_button = Button(
     base_color=(180, 50, 50),
     hover_color=(255, 80, 80)
 )
+# tutorial button
+how_to_button = Button(
+    x=WIDTH // 2 - 100,
+    y=180,
+    w=200,
+    h=50,
+    text="How to Play",
+    font=pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 30),
+    base_color=BUTTON_BASE,
+    hover_color=BUTTON_HOVER
+)
+
 
 # Repair Button
 repair_button = Button(
