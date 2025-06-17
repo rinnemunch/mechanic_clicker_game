@@ -63,6 +63,10 @@ mechanic2_interval = 1200
 repair_button_scale = 1.0
 repair_click_time = 0
 
+# Wrench Cursor
+wrench_cursor = pygame.image.load("assets/ui/wrench_cursor.png").convert_alpha()
+wrench_cursor = pygame.transform.scale(wrench_cursor, (32, 32))
+
 # Sound effects
 repair_sounds = [
     pygame.mixer.Sound("assets/ratchet1.wav"),
