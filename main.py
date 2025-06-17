@@ -350,7 +350,6 @@ trophy_img = pygame.image.load("assets/garage_upgrades/trophy.png").convert_alph
 trophy_img = pygame.transform.scale(trophy_img, (100, 100))
 frame_img = pygame.image.load("assets/garage_upgrades/frame.png").convert_alpha()
 frame_img = pygame.transform.scale(frame_img, (120, 120))
-pygame.display.set_caption("Mechanic Clicker")
 play_random_track()
 
 main_background = pygame.image.load("assets/main_bg.png").convert()
