@@ -7,6 +7,10 @@ import os
 pygame.init()
 pygame.mixer.init()
 
+# Hides the default cursor
+pygame.mouse.set_visible(False)
+
+
 WIDTH, HEIGHT = 800, 600
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -801,6 +805,10 @@ while running:
             floating_texts.remove(text)
         else:
             text.draw(WINDOW)
+
+    # Draw custom wrench cursor
+    mouse_x, mouse_y = pygame.mouse.get_pos()
+    WINDOW.blit(wrench_cursor, (mouse_x, mouse_y))
 
     # Update display
     pygame.display.flip()
