@@ -201,12 +201,12 @@ def show_stats_screen(total_repairs, total_money_earned, current_repair_speed):
                                                                                       (200, 200, 200))
 
         WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 100))
-        WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 200))
-        WINDOW.blit(money_stat, (WIDTH // 2 - money_stat.get_width() // 2, 260))
-        WINDOW.blit(speed_stat, (WIDTH // 2 - speed_stat.get_width() // 2, 320))
-        WINDOW.blit(boost_stat, (WIDTH // 2 - boost_stat.get_width() // 2, 380))
-        WINDOW.blit(passive_stat, (WIDTH // 2 - passive_stat.get_width() // 2, 410))
-        WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 440))
+        WINDOW.blit(stats, (WIDTH // 2 - stats.get_width() // 2, 180))
+        WINDOW.blit(money_stat, (WIDTH // 2 - money_stat.get_width() // 2, 240))
+        WINDOW.blit(speed_stat, (WIDTH // 2 - speed_stat.get_width() // 2, 300))
+        WINDOW.blit(boost_stat, (WIDTH // 2 - boost_stat.get_width() // 2, 360))
+        WINDOW.blit(passive_stat, (WIDTH // 2 - passive_stat.get_width() // 2, 420))
+        WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 480))
 
         pygame.display.flip()
 
