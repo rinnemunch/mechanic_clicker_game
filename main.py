@@ -256,10 +256,21 @@ def show_shop_screen():
                 shop_running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse = pygame.mouse.get_pos()
+
                 if upgrade_button_rect.collidepoint(mouse):
-                    handle_upgrade()
+                    if repair_upgrade_level < max_repair_level and money >= upgrade_cost:
+                        handle_upgrade()
+                    else:
+                        if sound_enabled:
+                            error_sound.play()
+
                 if passive_button_rect.collidepoint(mouse):
-                    handle_passive_upgrade()
+                    if passive_income_level < max_passive_level and money >= passive_upgrade_cost:
+                        handle_passive_upgrade()
+                    else:
+                        if sound_enabled:
+                            error_sound.play()
+
                 if boost_button_rect.collidepoint(mouse):
                     if boost_level < max_boost_level and money >= boost_upgrade_cost:
                         money -= boost_upgrade_cost
@@ -270,9 +281,10 @@ def show_shop_screen():
                             shop_upgrade_sound.play()
                         print(f"Boost Level: {boost_level}, Multiplier: {boost_amount}")
                     else:
-                        print("Not enough money or max level reached.")
+                        if sound_enabled:
+                            error_sound.play()
 
-                        # Background
+             # Background
             WINDOW.fill((20, 20, 20))
 
             # Title
