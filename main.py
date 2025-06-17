@@ -38,6 +38,9 @@ confetti_timer = 0
 BUTTON_BASE = (0, 123, 255)
 BUTTON_HOVER = (51, 156, 255)
 
+# floating texts
+floating_texts = []
+
 mechanic_frames = [pygame.image.load("assets/garage_upgrades/mechanic_1.png").convert_alpha(),
                    pygame.image.load("assets/garage_upgrades/mechanic_2.png").convert_alpha()]
 
@@ -99,6 +102,28 @@ class Button:
 
     def is_clicked(self, mouse_pos):
         return self.rect.collidepoint(mouse_pos)
+
+class FloatingText:
+    def __init__(self, text, x, y, duration=1000):
+        self.text = text
+        self.x = x
+        self.y = y
+        self.start_time = pygame.time.get_ticks()
+        self.duration = duration
+        self.alpha = 255
+        self.font = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 28)
+
+    def update(self):
+        elapsed = pygame.time.get_ticks() - self.start_time
+        self.y -= 0.3
+        self.alpha = max(255 - (elapsed / self.duration) * 255, 0)
+        return elapsed < self.duration
+
+    def draw(self, surface):
+        text_surf = self.font.render(self.text, True, (0, 255, 0))
+        text_surf.set_alpha(int(self.alpha))
+        surface.blit(text_surf, (self.x, self.y))
+
 
 
 def handle_upgrade():
