@@ -766,6 +766,13 @@ while running:
     money_rect = money_text.get_rect(center=(WIDTH // 2, 30))
     WINDOW.blit(money_text, money_rect)
 
+    # Update and draw floating texts
+    for text in floating_texts[:]:
+        if not text.update():
+            floating_texts.remove(text)
+        else:
+            text.draw(WINDOW)
+
     # Update display
     pygame.display.flip()
 
