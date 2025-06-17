@@ -209,6 +209,41 @@ def show_shop_screen():
                     else:
                         print("Not enough money or max level reached.")
 
+                        # Background
+            WINDOW.fill((20, 20, 20))
+
+            # Title
+            title = font.render("Shop", True, WHITE)
+            WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 50))
+
+            # Upgrade button
+            upgrade_text = f"Upgrade Repair Speed (Lvl {repair_upgrade_level}/{max_repair_level}) - ${upgrade_cost}"
+            upgrade_surface = font.render(upgrade_text, True, WHITE)
+            upgrade_button_rect = upgrade_surface.get_rect(center=(WIDTH // 2, 200))
+            pygame.draw.rect(WINDOW, (0, 100, 255), upgrade_button_rect.inflate(20, 10), border_radius=10)
+            WINDOW.blit(upgrade_surface, upgrade_button_rect)
+
+            # Passive income upgrade button
+            passive_text = f"Increase Passive Income (Lvl {passive_income_level}/{max_passive_level}) - ${passive_upgrade_cost}"
+            passive_surface = font.render(passive_text, True, WHITE)
+            passive_button_rect = passive_surface.get_rect(center=(WIDTH // 2, 300))
+            pygame.draw.rect(WINDOW, (255, 140, 0), passive_button_rect.inflate(20, 10), border_radius=10)
+            WINDOW.blit(passive_surface, passive_button_rect)
+
+            # Boost Earnings upgrade button
+            boost_text = f"Boost Earnings (Lvl {boost_level}/{max_boost_level}) - ${boost_upgrade_cost}"
+            boost_surface = font.render(boost_text, True, WHITE)
+            boost_button_rect = boost_surface.get_rect(center=(WIDTH // 2, 400))
+            pygame.draw.rect(WINDOW, (200, 50, 150), boost_button_rect.inflate(20, 10), border_radius=10)
+            WINDOW.blit(boost_surface, boost_button_rect)
+
+            # Tip
+            tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True,
+                                                                                          (200, 200, 200))
+            WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 440))
+
+            pygame.display.flip()
+
 
 def show_how_to_play_screen():
     how_to_running = True
@@ -235,41 +270,6 @@ def show_how_to_play_screen():
         for i, line in enumerate(lines):
             text = font.render(line, True, WHITE)
             WINDOW.blit(text, (WIDTH // 2 - text.get_width() // 2, 100 + i * 40))
-
-        pygame.display.flip()
-
-        # Background
-        WINDOW.fill((20, 20, 20))
-
-        # Title
-        title = font.render("Shop", True, WHITE)
-        WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 50))
-
-        # Upgrade button
-        upgrade_text = f"Upgrade Repair Speed (Lvl {repair_upgrade_level}/{max_repair_level}) - ${upgrade_cost}"
-        upgrade_surface = font.render(upgrade_text, True, WHITE)
-        upgrade_button_rect = upgrade_surface.get_rect(center=(WIDTH // 2, 200))
-        pygame.draw.rect(WINDOW, (0, 100, 255), upgrade_button_rect.inflate(20, 10), border_radius=10)
-        WINDOW.blit(upgrade_surface, upgrade_button_rect)
-
-        # Passive income upgrade button
-        passive_text = f"Increase Passive Income (Lvl {passive_income_level}/{max_passive_level}) - ${passive_upgrade_cost}"
-        passive_surface = font.render(passive_text, True, WHITE)
-        passive_button_rect = passive_surface.get_rect(center=(WIDTH // 2, 300))
-        pygame.draw.rect(WINDOW, (255, 140, 0), passive_button_rect.inflate(20, 10), border_radius=10)
-        WINDOW.blit(passive_surface, passive_button_rect)
-
-        # Boost Earnings upgrade button
-        boost_text = f"Boost Earnings (Lvl {boost_level}/{max_boost_level}) - ${boost_upgrade_cost}"
-        boost_surface = font.render(boost_text, True, WHITE)
-        boost_button_rect = boost_surface.get_rect(center=(WIDTH // 2, 400))
-        pygame.draw.rect(WINDOW, (200, 50, 150), boost_button_rect.inflate(20, 10), border_radius=10)
-        WINDOW.blit(boost_surface, boost_button_rect)
-
-        # Tip
-        tip = pygame.font.Font("assets/Roboto-VariableFont_wdth,wght.ttf", 24).render("Press ESC to return", True,
-                                                                                      (200, 200, 200))
-        WINDOW.blit(tip, (WIDTH // 2 - tip.get_width() // 2, 440))
 
         pygame.display.flip()
 
@@ -442,7 +442,6 @@ how_to_button = Button(
     hover_color=BUTTON_HOVER
 )
 
-
 # Repair Button
 repair_button = Button(
     x=button_x,
@@ -563,6 +562,7 @@ def show_settings_screen():
         music_toggle_button.draw(WINDOW, pygame.mouse.get_pos())
         skip_track_button.draw(WINDOW, pygame.mouse.get_pos())
         quit_button.draw(WINDOW, pygame.mouse.get_pos())
+        how_to_button.draw(WINDOW, pygame.mouse.get_pos())
 
         pygame.display.flip()
 
