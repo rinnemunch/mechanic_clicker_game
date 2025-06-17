@@ -636,6 +636,8 @@ while running:
             # Repair button
             if repair_button.is_clicked(mouse_pos):
                 if repair_progress < 100:
+                    repair_button_scale = 1.15
+                    repair_click_time = pygame.time.get_ticks()
                     repair_progress += 10
                     if sound_enabled:
                         random.choice(repair_sounds).play()
