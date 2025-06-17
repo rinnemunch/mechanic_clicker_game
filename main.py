@@ -292,21 +292,30 @@ def show_shop_screen():
             WINDOW.blit(title, (WIDTH // 2 - title.get_width() // 2, 50))
 
             # Upgrade button
-            upgrade_text = f"Upgrade Repair Speed (Lvl {repair_upgrade_level}/{max_repair_level}) - ${upgrade_cost}"
+            if repair_upgrade_level >= max_repair_level:
+                upgrade_text = "Upgrade Repair Speed (MAXED OUT)"
+            else:
+                upgrade_text = f"Upgrade Repair Speed (Lvl {repair_upgrade_level}/{max_repair_level}) - ${upgrade_cost}"
             upgrade_surface = font.render(upgrade_text, True, WHITE)
             upgrade_button_rect = upgrade_surface.get_rect(center=(WIDTH // 2, 200))
             pygame.draw.rect(WINDOW, (0, 100, 255), upgrade_button_rect.inflate(20, 10), border_radius=10)
             WINDOW.blit(upgrade_surface, upgrade_button_rect)
 
             # Passive income upgrade button
-            passive_text = f"Increase Passive Income (Lvl {passive_income_level}/{max_passive_level}) - ${passive_upgrade_cost}"
+            if passive_income_level >= max_passive_level:
+                passive_text = "Increase Passive Income (MAXED OUT)"
+            else:
+                passive_text = f"Increase Passive Income (Lvl {passive_income_level}/{max_passive_level}) - ${passive_upgrade_cost}"
             passive_surface = font.render(passive_text, True, WHITE)
             passive_button_rect = passive_surface.get_rect(center=(WIDTH // 2, 300))
             pygame.draw.rect(WINDOW, (255, 140, 0), passive_button_rect.inflate(20, 10), border_radius=10)
             WINDOW.blit(passive_surface, passive_button_rect)
 
             # Boost Earnings upgrade button
-            boost_text = f"Boost Earnings (Lvl {boost_level}/{max_boost_level}) - ${boost_upgrade_cost}"
+            if boost_level >= max_boost_level:
+                boost_text = "Boost Earnings (MAXED OUT)"
+            else:
+                boost_text = f"Boost Earnings (Lvl {boost_level}/{max_boost_level}) - ${boost_upgrade_cost}"
             boost_surface = font.render(boost_text, True, WHITE)
             boost_button_rect = boost_surface.get_rect(center=(WIDTH // 2, 400))
             pygame.draw.rect(WINDOW, (200, 50, 150), boost_button_rect.inflate(20, 10), border_radius=10)
