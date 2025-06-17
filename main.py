@@ -715,8 +715,15 @@ while running:
     # Draw stats button
     stats_button.draw(WINDOW, mouse_pos)
 
-    # Progress bar background
-    pygame.draw.rect(WINDOW, (100, 100, 100), (button_x, button_y + 60, button_width, 20))
+    # DYNAMIC progress bar color
+    if repair_progress < 33:
+        bar_color = (255, 0, 0)
+    elif repair_progress < 66:
+        bar_color = (255, 255, 0)
+    else:
+        bar_color = (0, 255, 0)
+
+    pygame.draw.rect(WINDOW, bar_color, (button_x, button_y + 60, fill_width, 20))
 
     # Progress bar fill
     fill_width = (repair_progress / 100) * button_width
