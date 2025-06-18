@@ -2,6 +2,7 @@ import pygame
 import sys
 import random
 import os
+os.chdir(os.path.dirname(os.path.dirname(__file__)))
 
 # Init
 pygame.init()
