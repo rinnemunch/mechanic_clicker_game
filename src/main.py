@@ -3,11 +3,11 @@ import sys
 import random
 import os
 os.chdir(os.path.dirname(os.path.dirname(__file__)))
+from constants import WHITE, GRAY, BUTTON_BASE, BUTTON_HOVER, CAR_COLOR, SHOP_COLOR, SETTINGS_COLOR, WIDTH, HEIGHT
+
 
 # Init
 pygame.init()
-
-WIDTH, HEIGHT = 800, 600
 
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
@@ -58,10 +58,6 @@ for filename in sorted(os.listdir(confetti_path)):
 show_confetti = False
 confetti_index = 0
 confetti_timer = 0
-
-# Button Colors
-BUTTON_BASE = (0, 123, 255)
-BUTTON_HOVER = (51, 156, 255)
 
 # floating texts
 floating_texts = []
@@ -427,11 +423,6 @@ car_sprites.append(load_car("blue_mustang.png", (340, 240), 20))
 current_car, car_offset = random.choice(car_sprites)
 last_car = None
 
-# Colors
-WHITE = (255, 255, 255)
-GRAY = (50, 50, 50)
-CAR_COLOR = (200, 0, 0)
-
 # Car
 car_x, car_y = 250, 150
 car_width, car_height = 200, 100
@@ -449,7 +440,6 @@ shop_width = 150
 shop_height = 50
 shop_x = WIDTH // 2 - shop_width // 2
 shop_y = HEIGHT - 70
-SHOP_COLOR = (0, 180, 100)
 shop_button = Button(
     x=shop_x,
     y=shop_y,
@@ -466,7 +456,6 @@ settings_width = 150
 settings_height = 50
 settings_x = WIDTH - settings_width - 20
 settings_y = HEIGHT - 70
-SETTINGS_COLOR = (180, 180, 0)
 settings_button = Button(
     x=settings_x,
     y=settings_y,
